@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/sourceforge/main/json-schema/sourceforge-project-schema.json",
+  "title": "SourceForge Project",
+  "description": "Schema for a SourceForge project retrieved via the Allura REST API",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Full display name of the project"
+    },
+    "shortname": {
+      "type": "string",
+      "description": "Short URL-safe name used as the project identifier"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the project"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the project on SourceForge"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the project was created"
+    },
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "mount_point": {
+            "type": "string"
+          },
+          "mount_label": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "List of tools installed in the project"
+    }
+  },
+  "required": ["name", "shortname"]
+}

@@ -1,0 +1,106 @@
+name: SourceForge Vocabulary
+description: >-
+  Domain vocabulary for SourceForge and the Apache Allura platform, covering open
+  source project hosting, collaboration tools, and the SourceForge REST API.
+version: "1.0"
+created: "2026-05-02"
+modified: "2026-05-02"
+terms:
+  - term: Allura
+    definition: >-
+      Apache Allura is the open source software forge platform that powers SourceForge.
+      It provides modular project tools including trackers, wikis, forums, blogs, and
+      code repositories accessible via a REST API.
+    tags:
+      - Platform
+
+  - term: Project
+    definition: >-
+      A SourceForge project is the primary organizational unit containing all tools,
+      code repositories, and collaboration resources. Projects are identified by a
+      unique shortname used in all API paths.
+    tags:
+      - Core Concept
+
+  - term: Tool
+    definition: >-
+      A SourceForge project tool is a functional module installed within a project
+      such as a tracker, wiki, discussion forum, or blog. Each tool has a mount
+      point (URL path segment) used in API calls.
+    tags:
+      - Core Concept
+
+  - term: Mount Point
+    definition: >-
+      The URL path segment identifying a specific tool instance within a project.
+      For example, a tracker might be mounted at 'tickets' or 'bugs'. Used in API
+      paths as /rest/p/{project}/{mount-point}.
+    tags:
+      - API Design
+
+  - term: Tracker
+    definition: >-
+      An issue tracking tool for managing bug reports, feature requests, and tasks.
+      Supports paginated listing, search, create, and update operations via the API.
+    tags:
+      - Issue Tracking
+
+  - term: Ticket
+    definition: >-
+      An individual issue, bug report, or feature request within a project tracker.
+      Identified by a sequential ticket_num and includes summary, description,
+      status, assignee, and labels.
+    tags:
+      - Issue Tracking
+
+  - term: Wiki
+    definition: >-
+      A collaborative documentation tool where project members can create and edit
+      pages. Pages are accessed by title and support Markdown formatting.
+    tags:
+      - Documentation
+
+  - term: Neighborhood
+    definition: >-
+      A top-level grouping in Allura. SourceForge has two default neighborhoods:
+      /p (Projects) and /u (Users). Neighborhood-level APIs support permission checks.
+    tags:
+      - Architecture
+
+  - term: Webhook
+    definition: >-
+      A callback URL registered to receive notifications when project events occur.
+      SourceForge supports repo-push webhooks for Git, SVN, and Mercurial repositories.
+    tags:
+      - Integration
+
+  - term: DOAP
+    definition: >-
+      Description of a Project. An RDF/XML format for describing open source software
+      projects. SourceForge project information is accessible in DOAP format via the API.
+    tags:
+      - Standard
+      - Linked Data
+
+  - term: OAuth 2.0
+    definition: >-
+      The primary authentication method for the SourceForge API. Bearer tokens are
+      generated at sourceforge.net/auth/oauth/ and included in API requests as
+      Authorization: Bearer {token}.
+    tags:
+      - Authentication
+
+  - term: PKCE
+    definition: >-
+      Proof Key for Code Exchange. A security extension to OAuth2 that SourceForge
+      supports for public client applications to prevent authorization code interception attacks.
+    tags:
+      - Authentication
+      - Security
+
+  - term: Forum
+    definition: >-
+      A categorized discussion area within a project's discussion tool. Forums
+      contain threads which contain posts.
+    tags:
+      - Community

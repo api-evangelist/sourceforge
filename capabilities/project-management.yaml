@@ -1,0 +1,259 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "SourceForge Project Management"
+  description: >-
+    Unified capability for managing open source projects on SourceForge. Enables
+    project maintainers, contributors, and community managers to programmatically
+    manage issues, wikis, discussions, blogs, and repository webhooks through the
+    SourceForge Allura REST API.
+  tags:
+    - SourceForge
+    - Open Source
+    - Project Management
+    - Issue Tracking
+    - Wiki
+    - Collaboration
+    - Developer Tools
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      SOURCEFORGE_BEARER_TOKEN: SOURCEFORGE_BEARER_TOKEN
+
+capability:
+  consumes:
+    - import: sourceforge-api
+      location: ./shared/sourceforge-allura.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: sourceforge-project-mgmt-api
+      description: "Unified REST API for SourceForge open source project management."
+      resources:
+        - path: /v1/projects/{project}
+          name: projects
+          description: Project information and management
+          operations:
+            - method: GET
+              name: get-project
+              description: Get details for a SourceForge project
+              call: "sourceforge-api.get-project"
+              with:
+                project: "rest.project"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/projects/{project}/tickets
+          name: tickets
+          description: Issue and bug tracking
+          operations:
+            - method: GET
+              name: list-tickets
+              description: List all tickets in the project tracker
+              call: "sourceforge-api.list-tickets"
+              with:
+                project: "rest.project"
+                tracker: "rest.tracker"
+                page: "rest.page"
+                limit: "rest.limit"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+            - method: POST
+              name: create-ticket
+              description: Create a new issue or bug report
+              call: "sourceforge-api.create-ticket"
+              with:
+                project: "rest.project"
+                tracker: "rest.tracker"
+                summary: "rest.summary"
+                description: "rest.description"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/projects/{project}/tickets/search
+          name: ticket-search
+          description: Ticket search
+          operations:
+            - method: GET
+              name: search-tickets
+              description: Search tickets with query filtering
+              call: "sourceforge-api.search-tickets"
+              with:
+                project: "rest.project"
+                tracker: "rest.tracker"
+                q: "rest.q"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/projects/{project}/wiki
+          name: wiki
+          description: Wiki page access
+          operations:
+            - method: GET
+              name: list-wiki-pages
+              description: List all wiki pages for a project
+              call: "sourceforge-api.list-wiki-pages"
+              with:
+                project: "rest.project"
+                wiki: "rest.wiki"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/projects/{project}/wiki/{title}
+          name: wiki-page
+          description: Individual wiki page
+          operations:
+            - method: GET
+              name: get-wiki-page
+              description: Get a specific wiki page by title
+              call: "sourceforge-api.get-wiki-page"
+              with:
+                project: "rest.project"
+                wiki: "rest.wiki"
+                title: "rest.title"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/projects/{project}/webhooks
+          name: webhooks
+          description: Repository webhook management
+          operations:
+            - method: GET
+              name: list-webhooks
+              description: List webhooks for a project tool
+              call: "sourceforge-api.list-webhooks"
+              with:
+                project: "rest.project"
+                tool: "rest.tool"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: sourceforge-project-mgmt-mcp
+      transport: http
+      description: "MCP server for AI-assisted SourceForge open source project management."
+      tools:
+        - name: get-project-info
+          description: >-
+            Get details about a SourceForge project including its description, tools,
+            and metadata. Use to understand a project before performing operations.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "sourceforge-api.get-project"
+          with:
+            project: "tools.project"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-project-issues
+          description: >-
+            List all issues and bug reports in a project tracker. Use for project
+            health assessment and triage workflows.
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "sourceforge-api.list-tickets"
+          with:
+            project: "tools.project"
+            tracker: "tools.tracker"
+            page: "tools.page"
+            limit: "tools.limit"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: search-project-issues
+          description: >-
+            Search issues in a project tracker with text queries. Use to find
+            specific bugs, features, or tickets by keyword.
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "sourceforge-api.search-tickets"
+          with:
+            project: "tools.project"
+            tracker: "tools.tracker"
+            q: "tools.query"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-project-issue
+          description: >-
+            Create a new bug report or feature request in a project tracker.
+            Use for automated issue filing from monitoring systems or CI/CD pipelines.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "sourceforge-api.create-ticket"
+          with:
+            project: "tools.project"
+            tracker: "tools.tracker"
+            summary: "tools.summary"
+            description: "tools.description"
+            status: "tools.status"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-wiki-page
+          description: >-
+            Retrieve a specific wiki page from a project. Use to read project
+            documentation, installation guides, or release notes.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "sourceforge-api.get-wiki-page"
+          with:
+            project: "tools.project"
+            wiki: "tools.wiki"
+            title: "tools.title"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-wiki-pages
+          description: >-
+            List all wiki pages for a project. Use to discover available documentation
+            and project resources.
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "sourceforge-api.list-wiki-pages"
+          with:
+            project: "tools.project"
+            wiki: "tools.wiki"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-project-webhooks
+          description: >-
+            List webhooks configured for a project tool. Use to audit repository
+            integrations and CI/CD pipeline connections.
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "sourceforge-api.list-webhooks"
+          with:
+            project: "tools.project"
+            tool: "tools.tool"
+          outputParameters:
+            - type: object
+              mapping: "$."

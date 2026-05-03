@@ -1,38 +1,117 @@
 # SourceForge
 
-SourceForge (https://sourceforge.net/) is one of the oldest and most widely used open source software hosting and distribution platforms. Founded in 1999, it provides developers and open source projects with version control hosting (Git and SVN), release management, bug and ticket tracking, discussion forums, wikis, and file download mirrors. SourceForge hosts hundreds of thousands of open source projects and serves as a distribution hub for software downloads worldwide. The platform is built on Apache Allura, an open source project hosting platform that SourceForge originally developed and later donated to the Apache Software Foundation.
+SourceForge is a web-based platform for hosting, managing, and distributing open source software projects. Built on the Apache Allura platform, SourceForge provides project management tools including wiki, issue tracking, discussion forums, blogs, file releases, code repositories (Git, SVN, Mercurial), and a REST API for programmatic access to all project resources.
 
-**URL:** [https://sourceforge.net/](https://sourceforge.net/)
+**URL:** [https://raw.githubusercontent.com/api-evangelist/sourceforge/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/sourceforge/refs/heads/main/apis.yml)
+
+## Scope
+
+- **Type:** Index
+- **Position:** Consuming
+- **Access:** 3rd-Party
+
+## Tags
+
+Open Source, Developer Tools, Project Management, Code Hosting, Collaboration
+
+## Timestamps
+
+- **Created:** 2026-03-16
+- **Modified:** 2026-05-02
 
 ## APIs
 
-### Allura API
+### SourceForge Allura API
 
-SourceForge exposes a REST API through the Apache Allura platform it is built on. The Allura API allows developers to programmatically access and manage project resources hosted on SourceForge.
+The SourceForge REST API built on Apache Allura provides programmatic access to project management, wiki pages, issue trackers, discussion forums, blogs, and administrative functions including webhooks. All endpoints follow the `/rest/p/{project}/{tool}` path pattern.
 
-**Base URL:** `https://sourceforge.net/rest`
+**Human URL:** [https://sourceforge.net/p/forge/documentation/Allura%20API/](https://sourceforge.net/p/forge/documentation/Allura%20API/)
+**Base URL:** `https://sourceforge.net`
 
-**Documentation:** [https://sourceforge.net/p/forge/documentation/Allura%20API/](https://sourceforge.net/p/forge/documentation/Allura%20API/)
+#### Tags
 
-**Authentication:** OAuth 1.0a is required for write operations. Many read endpoints are publicly accessible without authentication. OAuth credentials can be obtained from a user's account settings.
+Projects, Issues, Wiki, Discussions, Blogs, Webhooks
 
-**Key capabilities:**
+#### Properties
 
-- Retrieve project metadata, tools, and neighborhood information
-- Access and manage Git and SVN repository details
-- Read and create tickets in project bug/feature trackers
-- Interact with discussion forums and threads
-- Read and update wiki pages
-- Access user profile and account information
-- List project files and download releases
+- [Documentation](https://sourceforge.net/p/forge/documentation/Allura%20API/)
+- [Reference](https://sourceforge.net/api-docs/)
+- [Release API](https://sourceforge.net/p/forge/documentation/Using%20the%20Release%20API/)
+- [Download Stats API](https://sourceforge.net/p/forge/documentation/Download%20Stats%20API/)
+- [OAuth](https://sourceforge.net/auth/oauth/)
+- [OpenAPI](openapi/sourceforge-allura-openapi.yml)
 
-**Response format:** JSON
+## Artifacts
 
-**Example endpoints:**
+### OpenAPI Specifications
 
-- `GET /rest/p/{project}/` — Project summary and tools
-- `GET /rest/p/{project}/tickets/` — List project tickets
-- `GET /rest/p/{project}/tickets/{ticket_num}/` — Get a specific ticket
-- `POST /rest/p/{project}/tickets/new` — Create a new ticket (auth required)
-- `GET /rest/p/{project}/wiki/` — List wiki pages
-- `GET /rest/u/{username}/profile/` — User profile
+| API | File |
+|-----|------|
+| SourceForge Allura API | [openapi/sourceforge-allura-openapi.yml](openapi/sourceforge-allura-openapi.yml) |
+
+### Spectral Rules
+
+| Ruleset | File |
+|---------|------|
+| SourceForge Rules | [rules/sourceforge-rules.yml](rules/sourceforge-rules.yml) |
+
+### Naftiko Capabilities
+
+**Shared Definitions:**
+
+| API | File |
+|-----|------|
+| SourceForge Allura | [capabilities/shared/sourceforge-allura.yaml](capabilities/shared/sourceforge-allura.yaml) |
+
+**Workflow Capabilities:**
+
+| Workflow | File | Description |
+|----------|------|-------------|
+| Project Management | [capabilities/project-management.yaml](capabilities/project-management.yaml) | Open source project and issue management |
+
+### JSON Schemas
+
+| Schema | File |
+|--------|------|
+| Project | [json-schema/sourceforge-project-schema.json](json-schema/sourceforge-project-schema.json) |
+| Ticket | [json-schema/sourceforge-ticket-schema.json](json-schema/sourceforge-ticket-schema.json) |
+
+### JSON Structures
+
+| Structure | File |
+|-----------|------|
+| Ticket | [json-structure/sourceforge-ticket-structure.json](json-structure/sourceforge-ticket-structure.json) |
+
+### JSON-LD Contexts
+
+| Context | File |
+|---------|------|
+| SourceForge | [json-ld/sourceforge-context.jsonld](json-ld/sourceforge-context.jsonld) |
+
+### Examples
+
+| Example | File |
+|---------|------|
+| List Tickets | [examples/sourceforge-list-tickets-example.json](examples/sourceforge-list-tickets-example.json) |
+
+### Vocabulary
+
+| Vocabulary | File |
+|------------|------|
+| SourceForge | [vocabulary/sourceforge-vocabulary.yml](vocabulary/sourceforge-vocabulary.yml) |
+
+## Common Properties
+
+- [Portal](https://sourceforge.net/p/forge/documentation/API/)
+- [Documentation](https://sourceforge.net/p/forge/documentation/)
+- [Website](https://sourceforge.net/)
+- [API Documentation](https://sourceforge.net/api-docs/)
+- [OAuth Portal](https://sourceforge.net/auth/oauth/)
+- [Webhooks Documentation](https://forge-allura.apache.org/p/allura/wiki/Webhooks/)
+- [Support](https://sourceforge.net/p/forge/site-support/)
+- [Blog](https://sourceforge.net/blog/)
+
+## Maintainers
+
+**FN:** Kin Lane
+**Email:** kin@apievangelist.com

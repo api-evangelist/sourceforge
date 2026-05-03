@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/sourceforge/main/json-schema/sourceforge-ticket-schema.json",
+  "title": "SourceForge Ticket",
+  "description": "Schema for an issue or ticket in the SourceForge Allura tracker",
+  "type": "object",
+  "properties": {
+    "ticket_num": {
+      "type": "integer",
+      "description": "Sequential ticket number within the project tracker"
+    },
+    "summary": {
+      "type": "string",
+      "description": "Short title or summary of the ticket"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the issue or feature request"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of the ticket (open, closed, pending, etc.)"
+    },
+    "assigned_to": {
+      "type": "string",
+      "description": "Username of the person assigned to the ticket"
+    },
+    "labels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags or labels applied to the ticket"
+    },
+    "created_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the ticket was created"
+    },
+    "mod_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the ticket was last modified"
+    },
+    "private": {
+      "type": "boolean",
+      "description": "Whether the ticket is private (visible to project members only)"
+    }
+  },
+  "required": ["ticket_num", "summary"]
+}

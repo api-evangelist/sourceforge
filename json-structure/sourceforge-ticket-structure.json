@@ -1,0 +1,22 @@
+{
+  "title": "SourceForge Ticket Structure",
+  "description": "Structure of an issue or ticket in the SourceForge Allura tracker API response",
+  "type": "object",
+  "fields": [
+    {
+      "name": "ticket",
+      "type": "object",
+      "fields": [
+        { "name": "ticket_num", "type": "integer", "description": "Sequential ticket number" },
+        { "name": "summary", "type": "string", "description": "Ticket title" },
+        { "name": "description", "type": "string", "description": "Detailed ticket description" },
+        { "name": "status", "type": "string", "description": "Current ticket status (open, closed, pending)" },
+        { "name": "assigned_to", "type": "string", "description": "Assigned user's username" },
+        { "name": "labels", "type": "array", "items": "string", "description": "Applied labels/tags" },
+        { "name": "created_date", "type": "string", "format": "date-time" },
+        { "name": "mod_date", "type": "string", "format": "date-time" },
+        { "name": "private", "type": "boolean" }
+      ]
+    }
+  ]
+}

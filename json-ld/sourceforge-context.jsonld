@@ -1,0 +1,64 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Project": "doap:Project",
+    "Ticket": "schema:BugReport",
+    "WikiPage": "schema:WebPage",
+    "BlogPost": "schema:BlogPosting",
+    "Webhook": "schema:EntryPoint",
+
+    "id": "@id",
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "shortname": {
+      "@id": "doap:shortdesc",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "created": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "ticket_num": {
+      "@id": "schema:identifier",
+      "@type": "xsd:integer"
+    },
+    "summary": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "schema:status",
+      "@type": "xsd:string"
+    },
+    "assigned_to": {
+      "@id": "schema:assignee",
+      "@type": "xsd:string"
+    },
+    "labels": {
+      "@id": "schema:keywords",
+      "@container": "@set"
+    },
+    "created_date": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "mod_date": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    }
+  }
+}

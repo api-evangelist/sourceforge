@@ -1,0 +1,285 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "SourceForge Allura API"
+  description: >-
+    The SourceForge REST API provides programmatic access to open source project
+    management including wikis, issue trackers, discussion forums, blogs, and
+    administrative functions. All endpoints follow the /rest/p/{project}/{tool} pattern.
+  tags:
+    - Open Source
+    - Project Management
+    - Issues
+    - Wiki
+    - Discussions
+    - Code Hosting
+    - SourceForge
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      SOURCEFORGE_BEARER_TOKEN: SOURCEFORGE_BEARER_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: sourceforge-api
+      baseUri: https://sourceforge.net
+      description: "SourceForge Allura REST API for project management"
+      authentication:
+        type: bearer
+        token: "{{SOURCEFORGE_BEARER_TOKEN}}"
+      resources:
+        - name: projects
+          path: /rest/p/{project}
+          description: Project management
+          operations:
+            - name: get-project
+              method: GET
+              description: Retrieve details for a SourceForge project
+              inputParameters:
+                - name: project
+                  in: path
+                  type: string
+                  required: true
+                  description: Project shortname
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: create-project
+              method: POST
+              description: Create a new SourceForge project
+              body:
+                type: json
+                data:
+                  shortname: "{{tools.shortname}}"
+                  name: "{{tools.name}}"
+                  description: "{{tools.description}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: tracker
+          path: /rest/p/{project}/{tracker}
+          description: Issue and ticket tracking
+          operations:
+            - name: list-tickets
+              method: GET
+              description: List all tickets in the project tracker
+              inputParameters:
+                - name: project
+                  in: path
+                  type: string
+                  required: true
+                - name: tracker
+                  in: path
+                  type: string
+                  required: true
+                  description: Tracker tool mount point
+                - name: page
+                  in: query
+                  type: integer
+                  required: false
+                - name: limit
+                  in: query
+                  type: integer
+                  required: false
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: create-ticket
+              method: POST
+              description: Create a new issue or ticket
+              inputParameters:
+                - name: project
+                  in: path
+                  type: string
+                  required: true
+                - name: tracker
+                  in: path
+                  type: string
+                  required: true
+              body:
+                type: json
+                data:
+                  ticket_form.summary: "{{tools.summary}}"
+                  ticket_form.description: "{{tools.description}}"
+                  ticket_form.status: "{{tools.status}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: get-ticket
+              method: GET
+              description: Get ticket details by number
+              inputParameters:
+                - name: project
+                  in: path
+                  type: string
+                  required: true
+                - name: tracker
+                  in: path
+                  type: string
+                  required: true
+                - name: ticketNumber
+                  in: path
+                  type: integer
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: search-tickets
+              method: GET
+              description: Search tickets with filtering
+              inputParameters:
+                - name: project
+                  in: path
+                  type: string
+                  required: true
+                - name: tracker
+                  in: path
+                  type: string
+                  required: true
+                - name: q
+                  in: query
+                  type: string
+                  required: false
+                  description: Search query string
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: wiki
+          path: /rest/p/{project}/{wiki}
+          description: Wiki page management
+          operations:
+            - name: list-wiki-pages
+              method: GET
+              description: List all wiki pages for a project
+              inputParameters:
+                - name: project
+                  in: path
+                  type: string
+                  required: true
+                - name: wiki
+                  in: path
+                  type: string
+                  required: true
+                  description: Wiki tool mount point
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: get-wiki-page
+              method: GET
+              description: Retrieve a specific wiki page by title
+              inputParameters:
+                - name: project
+                  in: path
+                  type: string
+                  required: true
+                - name: wiki
+                  in: path
+                  type: string
+                  required: true
+                - name: title
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: webhooks
+          path: /rest/p/{project}/admin/{tool}/webhooks
+          description: Webhook management for repository events
+          operations:
+            - name: list-webhooks
+              method: GET
+              description: List all webhooks for a project tool
+              inputParameters:
+                - name: project
+                  in: path
+                  type: string
+                  required: true
+                - name: tool
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: sourceforge-api-rest
+      resources:
+        - path: /v1/projects/{project}
+          name: projects
+          description: Project management
+          operations:
+            - method: GET
+              name: get-project
+              description: Get project details
+
+        - path: /v1/projects/{project}/tickets
+          name: tickets
+          description: Issue tracking
+          operations:
+            - method: GET
+              name: list-tickets
+              description: List project tickets
+
+    - type: mcp
+      port: 9100
+      namespace: sourceforge-api-mcp
+      transport: http
+      tools:
+        - name: get-project
+          description: Get details for a SourceForge project
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "sourceforge-api.get-project"
+          with:
+            project: "tools.project"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-issues
+          description: List issues/tickets in a project tracker
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "sourceforge-api.list-tickets"
+          with:
+            project: "tools.project"
+            tracker: "tools.tracker"
+          outputParameters:
+            - type: object
+              mapping: "$."

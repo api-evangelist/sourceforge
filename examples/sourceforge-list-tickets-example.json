@@ -1,0 +1,45 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://sourceforge.net/rest/p/myproject/tickets",
+    "headers": {
+      "Authorization": "Bearer your-bearer-token-here"
+    },
+    "queryParameters": {
+      "page": 0,
+      "limit": 25
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "tickets": [
+        {
+          "ticket_num": 42,
+          "summary": "Fix null pointer exception in CSV parser",
+          "description": "When parsing an empty CSV file the application throws a NullPointerException at line 234 of CsvParser.java.",
+          "status": "open",
+          "assigned_to": "developer123",
+          "labels": ["bug", "parser", "critical"],
+          "created_date": "2026-04-15T09:22:00.000Z",
+          "mod_date": "2026-05-01T14:30:00.000Z",
+          "private": false
+        },
+        {
+          "ticket_num": 41,
+          "summary": "Add support for XLSX output format",
+          "description": "Users are requesting the ability to export data as Excel XLSX files in addition to CSV.",
+          "status": "pending",
+          "assigned_to": null,
+          "labels": ["enhancement", "export"],
+          "created_date": "2026-04-10T15:45:00.000Z",
+          "mod_date": "2026-04-12T10:00:00.000Z",
+          "private": false
+        }
+      ],
+      "count": 2,
+      "page": 0,
+      "limit": 25
+    }
+  }
+}
