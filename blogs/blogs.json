@@ -1,0 +1,13 @@
+{
+  "repo": "sourceforge",
+  "feeds": [
+    {
+      "source": "https://sourceforge.net/blog/",
+      "feed_url": "https://sourceforge.net/blog/feed/",
+      "saved": 10,
+      "title": "SourceForge Community Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:36:52Z"
+}
