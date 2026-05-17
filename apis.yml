@@ -75,7 +75,7 @@ common:
     url: https://sourceforge.net/p/forge/site-support/
   - type: Blog
     url: https://sourceforge.net/blog/
-  - type: Status
+  - type: StatusPage
     url: https://sourceforge.net/p/forge/site-support/
   - type: Terms of Use
     url: https://sourceforge.net/p/forge/documentation/Terms%20of%20Use/
