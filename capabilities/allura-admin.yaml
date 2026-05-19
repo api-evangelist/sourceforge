@@ -1,0 +1,348 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SourceForge Allura API — Admin
+  description: 'SourceForge Allura API — Admin. 7 operations. Lead operation: Export Project. Self-contained Naftiko capability
+    covering one Sourceforge business surface.'
+  tags:
+  - Sourceforge
+  - Admin
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SOURCEFORGE_API_KEY: SOURCEFORGE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: allura-admin
+    baseUri: https://sourceforge.net
+    description: SourceForge Allura API — Admin business capability. Self-contained, no shared references.
+    resources:
+    - name: rest-p-project-admin-export
+      path: /rest/p/{project}/admin/export
+      operations:
+      - name: exportproject
+        method: POST
+        description: Export Project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: rest-p-project-admin-export_status
+      path: /rest/p/{project}/admin/export_status
+      operations:
+      - name: getexportstatus
+        method: GET
+        description: Get Export Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: rest-p-project-admin-install_tool
+      path: /rest/p/{project}/admin/install_tool
+      operations:
+      - name: installtool
+        method: POST
+        description: Install Tool
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: rest-p-project-admin-tool-webhooks
+      path: /rest/p/{project}/admin/{tool}/webhooks
+      operations:
+      - name: listwebhooks
+        method: GET
+        description: List Webhooks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: tool
+          in: path
+          type: string
+          description: Tool mount point
+          required: true
+    - name: rest-p-project-admin-tool-webhooks-type
+      path: /rest/p/{project}/admin/{tool}/webhooks/{type}
+      operations:
+      - name: createwebhook
+        method: POST
+        description: Create Webhook
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: tool
+          in: path
+          type: string
+          required: true
+        - name: type
+          in: path
+          type: string
+          description: Webhook type (e.g., repo-push)
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: rest-p-project-admin-tool-webhooks-type-id
+      path: /rest/p/{project}/admin/{tool}/webhooks/{type}/{id}
+      operations:
+      - name: updatewebhook
+        method: POST
+        description: Update Webhook
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: tool
+          in: path
+          type: string
+          required: true
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          description: Webhook identifier
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletewebhook
+        method: DELETE
+        description: Delete Webhook
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: tool
+          in: path
+          type: string
+          required: true
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SOURCEFORGE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: allura-admin-rest
+    port: 8080
+    description: REST adapter for SourceForge Allura API — Admin. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/p/{project}/admin/export
+      name: rest-p-project-admin-export
+      description: REST surface for rest-p-project-admin-export.
+      operations:
+      - method: POST
+        name: exportproject
+        description: Export Project
+        call: allura-admin.exportproject
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/p/{project}/admin/export-status
+      name: rest-p-project-admin-export-status
+      description: REST surface for rest-p-project-admin-export_status.
+      operations:
+      - method: GET
+        name: getexportstatus
+        description: Get Export Status
+        call: allura-admin.getexportstatus
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/p/{project}/admin/install-tool
+      name: rest-p-project-admin-install-tool
+      description: REST surface for rest-p-project-admin-install_tool.
+      operations:
+      - method: POST
+        name: installtool
+        description: Install Tool
+        call: allura-admin.installtool
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/p/{project}/admin/{tool}/webhooks
+      name: rest-p-project-admin-tool-webhooks
+      description: REST surface for rest-p-project-admin-tool-webhooks.
+      operations:
+      - method: GET
+        name: listwebhooks
+        description: List Webhooks
+        call: allura-admin.listwebhooks
+        with:
+          tool: rest.tool
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/p/{project}/admin/{tool}/webhooks/{type}
+      name: rest-p-project-admin-tool-webhooks-type
+      description: REST surface for rest-p-project-admin-tool-webhooks-type.
+      operations:
+      - method: POST
+        name: createwebhook
+        description: Create Webhook
+        call: allura-admin.createwebhook
+        with:
+          tool: rest.tool
+          type: rest.type
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/p/{project}/admin/{tool}/webhooks/{type}/{id}
+      name: rest-p-project-admin-tool-webhooks-type-id
+      description: REST surface for rest-p-project-admin-tool-webhooks-type-id.
+      operations:
+      - method: POST
+        name: updatewebhook
+        description: Update Webhook
+        call: allura-admin.updatewebhook
+        with:
+          tool: rest.tool
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletewebhook
+        description: Delete Webhook
+        call: allura-admin.deletewebhook
+        with:
+          tool: rest.tool
+          type: rest.type
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: allura-admin-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SourceForge Allura API — Admin. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: export-project
+      description: Export Project
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: allura-admin.exportproject
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-export-status
+      description: Get Export Status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: allura-admin.getexportstatus
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: install-tool
+      description: Install Tool
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: allura-admin.installtool
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-webhooks
+      description: List Webhooks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: allura-admin.listwebhooks
+      with:
+        tool: tools.tool
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-webhook
+      description: Create Webhook
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: allura-admin.createwebhook
+      with:
+        tool: tools.tool
+        type: tools.type
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-webhook
+      description: Update Webhook
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: allura-admin.updatewebhook
+      with:
+        tool: tools.tool
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-webhook
+      description: Delete Webhook
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: allura-admin.deletewebhook
+      with:
+        tool: tools.tool
+        type: tools.type
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

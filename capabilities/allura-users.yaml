@@ -1,0 +1,154 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SourceForge Allura API — Users
+  description: 'SourceForge Allura API — Users. 3 operations. Lead operation: List User Tools. Self-contained Naftiko capability
+    covering one Sourceforge business surface.'
+  tags:
+  - Sourceforge
+  - Users
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SOURCEFORGE_API_KEY: SOURCEFORGE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: allura-users
+    baseUri: https://sourceforge.net
+    description: SourceForge Allura API — Users business capability. Self-contained, no shared references.
+    resources:
+    - name: rest-auth-tools-tool_type
+      path: /rest/auth/tools/{tool_type}
+      operations:
+      - name: listusertools
+        method: GET
+        description: List User Tools
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: tool_type
+          in: path
+          type: string
+          description: Type of tool to list
+          required: true
+    - name: rest-oauth2-token
+      path: /rest/oauth2/token
+      operations:
+      - name: getoauthtoken
+        method: POST
+        description: Get OAuth2 Token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: rest-user
+      path: /rest/user
+      operations:
+      - name: getcurrentuser
+        method: GET
+        description: Get Current User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SOURCEFORGE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: allura-users-rest
+    port: 8080
+    description: REST adapter for SourceForge Allura API — Users. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/auth/tools/{tool-type}
+      name: rest-auth-tools-tool-type
+      description: REST surface for rest-auth-tools-tool_type.
+      operations:
+      - method: GET
+        name: listusertools
+        description: List User Tools
+        call: allura-users.listusertools
+        with:
+          tool_type: rest.tool_type
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/oauth2/token
+      name: rest-oauth2-token
+      description: REST surface for rest-oauth2-token.
+      operations:
+      - method: POST
+        name: getoauthtoken
+        description: Get OAuth2 Token
+        call: allura-users.getoauthtoken
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user
+      name: rest-user
+      description: REST surface for rest-user.
+      operations:
+      - method: GET
+        name: getcurrentuser
+        description: Get Current User
+        call: allura-users.getcurrentuser
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: allura-users-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SourceForge Allura API — Users. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-user-tools
+      description: List User Tools
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: allura-users.listusertools
+      with:
+        tool_type: tools.tool_type
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-oauth2-token
+      description: Get OAuth2 Token
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: allura-users.getoauthtoken
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-current-user
+      description: Get Current User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: allura-users.getcurrentuser
+      outputParameters:
+      - type: object
+        mapping: $.
