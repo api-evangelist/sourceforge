@@ -1,0 +1,889 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SourceForge Allura API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific SourceForge project."
+        },
+        {
+          "info": {
+            "name": "Create Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sourceforge.net/rest/p/add_project",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Create a new SourceForge project."
+        },
+        {
+          "info": {
+            "name": "Check Project Access",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project/has_access",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              }
+            ]
+          },
+          "docs": "Check if the authenticated user has access to a project."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Wikis",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Wiki Pages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project/:wiki",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "wiki",
+                "value": "",
+                "type": "path",
+                "description": "Wiki tool mount point (e.g., wiki, docs)"
+              }
+            ]
+          },
+          "docs": "List all wiki pages for a project."
+        },
+        {
+          "info": {
+            "name": "Get Wiki Page",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project/:wiki/:title",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "wiki",
+                "value": "",
+                "type": "path",
+                "description": "Wiki tool mount point (e.g., wiki, docs)"
+              },
+              {
+                "name": "title",
+                "value": "",
+                "type": "path",
+                "description": "Wiki page title"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific wiki page by title."
+        },
+        {
+          "info": {
+            "name": "Create Or Update Wiki Page",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sourceforge.net/rest/p/:project/:wiki/:title",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "wiki",
+                "value": "",
+                "type": "path",
+                "description": "Wiki tool mount point (e.g., wiki, docs)"
+              },
+              {
+                "name": "title",
+                "value": "",
+                "type": "path",
+                "description": "Wiki page title"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Create a new wiki page or update an existing one."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tracker",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Tickets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project/:tracker",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "tracker",
+                "value": "",
+                "type": "path",
+                "description": "Tracker tool mount point (e.g., tickets, bugs)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (default 0)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (default 25)"
+              }
+            ]
+          },
+          "docs": "List all tickets in the project tracker (paginated)."
+        },
+        {
+          "info": {
+            "name": "Create Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sourceforge.net/rest/p/:project/:tracker/new",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "tracker",
+                "value": "",
+                "type": "path",
+                "description": "Tracker tool mount point (e.g., tickets, bugs)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Create a new issue or ticket in the project tracker."
+        },
+        {
+          "info": {
+            "name": "Get Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project/:tracker/:ticketNumber",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "tracker",
+                "value": "",
+                "type": "path",
+                "description": "Tracker tool mount point (e.g., tickets, bugs)"
+              },
+              {
+                "name": "ticketNumber",
+                "value": "",
+                "type": "path",
+                "description": "Ticket number"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific ticket by number."
+        },
+        {
+          "info": {
+            "name": "Update Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sourceforge.net/rest/p/:project/:tracker/:ticketNumber/save",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "tracker",
+                "value": "",
+                "type": "path",
+                "description": "Tracker tool mount point (e.g., tickets, bugs)"
+              },
+              {
+                "name": "ticketNumber",
+                "value": "",
+                "type": "path",
+                "description": "Ticket number"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Update an existing ticket's details."
+        },
+        {
+          "info": {
+            "name": "Search Tickets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project/:tracker/search",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "tracker",
+                "value": "",
+                "type": "path",
+                "description": "Tracker tool mount point (e.g., tickets, bugs)"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query string"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search tickets in the tracker with filtering."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Discussion",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Discussion Forums",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project/:discussion",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "discussion",
+                "value": "",
+                "type": "path",
+                "description": "Discussion tool mount point"
+              }
+            ]
+          },
+          "docs": "List all forums in the project discussion area."
+        },
+        {
+          "info": {
+            "name": "List Forum Topics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project/:discussion/:forum",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "discussion",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "forum",
+                "value": "",
+                "type": "path",
+                "description": "Forum identifier"
+              }
+            ]
+          },
+          "docs": "Get topics in a specific discussion forum."
+        },
+        {
+          "info": {
+            "name": "List Thread Posts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project/:discussion/:forum/thread/:thread",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "discussion",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "forum",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "thread",
+                "value": "",
+                "type": "path",
+                "description": "Thread identifier"
+              }
+            ]
+          },
+          "docs": "List all posts in a discussion thread."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Blog",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Blog Posts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project/:blog",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "blog",
+                "value": "",
+                "type": "path",
+                "description": "Blog tool mount point (e.g., blog)"
+              }
+            ]
+          },
+          "docs": "List all blog posts for a project."
+        },
+        {
+          "info": {
+            "name": "Create Blog Post",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sourceforge.net/rest/p/:project/:blog",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "blog",
+                "value": "",
+                "type": "path",
+                "description": "Blog tool mount point (e.g., blog)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Create a new blog post for the project."
+        },
+        {
+          "info": {
+            "name": "Get Blog Post",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project/:blog/:year/:month/:title",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "blog",
+                "value": "",
+                "type": "path",
+                "description": "Blog tool mount point (e.g., blog)"
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "month",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "title",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific blog post."
+        },
+        {
+          "info": {
+            "name": "Update Blog Post",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sourceforge.net/rest/p/:project/:blog/:year/:month/:title",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "blog",
+                "value": "",
+                "type": "path",
+                "description": "Blog tool mount point (e.g., blog)"
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "month",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "title",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Update an existing blog post."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Admin",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Export Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sourceforge.net/rest/p/:project/admin/export",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              }
+            ]
+          },
+          "docs": "Submit a project export job."
+        },
+        {
+          "info": {
+            "name": "Get Export Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project/admin/export_status",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              }
+            ]
+          },
+          "docs": "Check the status of a project export job."
+        },
+        {
+          "info": {
+            "name": "Install Tool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sourceforge.net/rest/p/:project/admin/install_tool",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "tool",
+                  "value": ""
+                },
+                {
+                  "name": "mount_point",
+                  "value": ""
+                },
+                {
+                  "name": "mount_label",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Install a new tool into the project."
+        },
+        {
+          "info": {
+            "name": "List Webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project/admin/:tool/webhooks",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "tool",
+                "value": "",
+                "type": "path",
+                "description": "Tool mount point"
+              }
+            ]
+          },
+          "docs": "List all webhooks configured for a project tool."
+        },
+        {
+          "info": {
+            "name": "Create Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sourceforge.net/rest/p/:project/admin/:tool/webhooks/:type",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "tool",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Webhook type (e.g., repo-push)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Create a new webhook for a project tool (supports repo-push for Git, SVN, Mercurial)."
+        },
+        {
+          "info": {
+            "name": "Update Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sourceforge.net/rest/p/:project/admin/:tool/webhooks/:type/:id",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "tool",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Webhook identifier"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Update an existing webhook configuration."
+        },
+        {
+          "info": {
+            "name": "Delete Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sourceforge.net/rest/p/:project/admin/:tool/webhooks/:type/:id",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "tool",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a webhook configuration."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Current User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/user"
+          },
+          "docs": "Retrieve the authenticated user's profile."
+        },
+        {
+          "info": {
+            "name": "List User Tools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/auth/tools/:tool_type",
+            "params": [
+              {
+                "name": "tool_type",
+                "value": "",
+                "type": "path",
+                "description": "Type of tool to list"
+              }
+            ]
+          },
+          "docs": "List all tools of the specified type accessible to the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Get OAuth2 Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sourceforge.net/rest/oauth2/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "grant_type",
+                  "value": ""
+                },
+                {
+                  "name": "code",
+                  "value": ""
+                },
+                {
+                  "name": "redirect_uri",
+                  "value": ""
+                },
+                {
+                  "name": "client_id",
+                  "value": ""
+                },
+                {
+                  "name": "code_verifier",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Exchange authorization code for OAuth2 access token."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
