@@ -62,7 +62,7 @@ common:
     url: https://sourceforge.net/p/forge/documentation/
   - type: Website
     url: https://sourceforge.net/
-  - type: GitHub Org
+  - type: GitHubOrg
     url: https://github.com/apache/allura
   - type: API Documentation
     url: https://sourceforge.net/api-docs/
@@ -76,9 +76,9 @@ common:
     url: https://sourceforge.net/blog/
   - type: StatusPage
     url: https://sourceforge.net/p/forge/site-support/
-  - type: Terms of Use
+  - type: TermsOfService
     url: https://sourceforge.net/p/forge/documentation/Terms%20of%20Use/
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://sourceforge.net/llms.txt
 maintainers:
   - FN: Kin Lane
