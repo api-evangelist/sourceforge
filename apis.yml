@@ -54,6 +54,12 @@ apis:
         url: https://sourceforge.net/p/forge/documentation/
         email: ''
 common:
+  - type: VulnerabilityDisclosure
+    url: security/sourceforge-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/sourceforge-domain-security.yml
+  - type: Authentication
+    url: authentication/sourceforge-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/sourceforge-net
   - type: Portal

@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/sourceforge-allura-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  description: OAuth2 Bearer token
+  sources:
+  - openapi/sourceforge-allura-openapi.yml
+- name: OAuth1
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: OAuth 1.0 authorization header
+  sources:
+  - openapi/sourceforge-allura-openapi.yml
