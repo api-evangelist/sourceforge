@@ -12,7 +12,7 @@
       "source": "https://sourceforge.net/p/forge/site-support/feed.rss",
       "feed_url": "https://sourceforge.net/p/forge/site-support/feed.rss",
       "title": "",
-      "saved": 8,
+      "saved": 0,
       "method": "feed"
     },
     {
@@ -23,6 +23,6 @@
       "method": "discovered"
     }
   ],
-  "post_count": 48,
-  "fetched": "2026-06-27T12:03:07Z"
+  "post_count": 60,
+  "fetched": "2026-07-11T11:50:51Z"
 }
