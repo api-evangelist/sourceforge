@@ -54,6 +54,8 @@ apis:
         url: https://sourceforge.net/p/forge/documentation/
         email: ''
 common:
+  - type: AgenticAccess
+    url: agentic-access/sourceforge-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/sourceforge-vulnerability-disclosure.yml
   - type: DomainSecurity
