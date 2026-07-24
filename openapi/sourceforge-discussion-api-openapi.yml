@@ -1,0 +1,153 @@
+openapi: 3.0.0
+info:
+  title: SourceForge Allura Admin Discussion API
+  description: The SourceForge REST API provides programmatic access to project management, wikis, issue trackers, discussions, blogs, and administrative functions. All endpoints are prefixed with /rest/ and follow the project tool path pattern. Supports OAuth 2.0 and OAuth 1.0 authentication.
+  version: v1
+  contact:
+    name: SourceForge Support
+    url: https://sourceforge.net/p/forge/documentation/API/
+  license:
+    name: Apache License 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://sourceforge.net
+  description: SourceForge REST API
+security:
+- BearerAuth: []
+tags:
+- name: Discussion
+  description: Forum and discussion thread management
+paths:
+  /rest/p/{project}/{discussion}:
+    get:
+      operationId: listForums
+      summary: List Discussion Forums
+      description: List all forums in the project discussion area.
+      tags:
+      - Discussion
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - name: discussion
+        in: path
+        required: true
+        description: Discussion tool mount point
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of forums
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForumsResponse'
+  /rest/p/{project}/{discussion}/{forum}:
+    get:
+      operationId: listForumTopics
+      summary: List Forum Topics
+      description: Get topics in a specific discussion forum.
+      tags:
+      - Discussion
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - name: discussion
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: forum
+        in: path
+        required: true
+        description: Forum identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Forum topics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForumTopicsResponse'
+  /rest/p/{project}/{discussion}/{forum}/thread/{thread}:
+    get:
+      operationId: listThreadPosts
+      summary: List Thread Posts
+      description: List all posts in a discussion thread.
+      tags:
+      - Discussion
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - name: discussion
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: forum
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: thread
+        in: path
+        required: true
+        description: Thread identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Thread posts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThreadPostsResponse'
+components:
+  schemas:
+    ForumTopicsResponse:
+      type: object
+      properties:
+        threads:
+          type: array
+          items:
+            type: object
+    Forum:
+      type: object
+      properties:
+        name:
+          type: string
+        shortname:
+          type: string
+        description:
+          type: string
+        num_topics:
+          type: integer
+    ThreadPostsResponse:
+      type: object
+      properties:
+        posts:
+          type: array
+          items:
+            type: object
+    ForumsResponse:
+      type: object
+      properties:
+        forums:
+          type: array
+          items:
+            $ref: '#/components/schemas/Forum'
+  parameters:
+    ProjectId:
+      name: project
+      in: path
+      required: true
+      description: Project shortname/identifier
+      schema:
+        type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 Bearer token
+    OAuth1:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: OAuth 1.0 authorization header

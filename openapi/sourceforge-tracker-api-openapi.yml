@@ -1,0 +1,259 @@
+openapi: 3.0.0
+info:
+  title: SourceForge Allura Admin Tracker API
+  description: The SourceForge REST API provides programmatic access to project management, wikis, issue trackers, discussions, blogs, and administrative functions. All endpoints are prefixed with /rest/ and follow the project tool path pattern. Supports OAuth 2.0 and OAuth 1.0 authentication.
+  version: v1
+  contact:
+    name: SourceForge Support
+    url: https://sourceforge.net/p/forge/documentation/API/
+  license:
+    name: Apache License 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://sourceforge.net
+  description: SourceForge REST API
+security:
+- BearerAuth: []
+tags:
+- name: Tracker
+  description: Issue and ticket tracking
+paths:
+  /rest/p/{project}/{tracker}:
+    get:
+      operationId: listTickets
+      summary: List Tickets
+      description: List all tickets in the project tracker (paginated).
+      tags:
+      - Tracker
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - $ref: '#/components/parameters/TrackerTool'
+      - name: page
+        in: query
+        required: false
+        description: Page number (default 0)
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        required: false
+        description: Results per page (default 25)
+        schema:
+          type: integer
+          default: 25
+      responses:
+        '200':
+          description: List of tickets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketsResponse'
+  /rest/p/{project}/{tracker}/new:
+    post:
+      operationId: createTicket
+      summary: Create Ticket
+      description: Create a new issue or ticket in the project tracker.
+      tags:
+      - Tracker
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - $ref: '#/components/parameters/TrackerTool'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TicketRequest'
+      responses:
+        '200':
+          description: Ticket created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+  /rest/p/{project}/{tracker}/{ticketNumber}:
+    get:
+      operationId: getTicket
+      summary: Get Ticket
+      description: Retrieve details for a specific ticket by number.
+      tags:
+      - Tracker
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - $ref: '#/components/parameters/TrackerTool'
+      - name: ticketNumber
+        in: path
+        required: true
+        description: Ticket number
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Ticket details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketResponse'
+        '404':
+          description: Ticket not found
+  /rest/p/{project}/{tracker}/{ticketNumber}/save:
+    post:
+      operationId: updateTicket
+      summary: Update Ticket
+      description: Update an existing ticket's details.
+      tags:
+      - Tracker
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - $ref: '#/components/parameters/TrackerTool'
+      - name: ticketNumber
+        in: path
+        required: true
+        description: Ticket number
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TicketRequest'
+      responses:
+        '200':
+          description: Ticket updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+  /rest/p/{project}/{tracker}/search:
+    get:
+      operationId: searchTickets
+      summary: Search Tickets
+      description: Search tickets in the tracker with filtering.
+      tags:
+      - Tracker
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - $ref: '#/components/parameters/TrackerTool'
+      - name: q
+        in: query
+        required: false
+        description: Search query string
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 25
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketsResponse'
+components:
+  parameters:
+    ProjectId:
+      name: project
+      in: path
+      required: true
+      description: Project shortname/identifier
+      schema:
+        type: string
+    TrackerTool:
+      name: tracker
+      in: path
+      required: true
+      description: Tracker tool mount point (e.g., tickets, bugs)
+      schema:
+        type: string
+  schemas:
+    TicketRequest:
+      type: object
+      properties:
+        ticket_form.summary:
+          type: string
+          description: Issue title
+        ticket_form.description:
+          type: string
+          description: Detailed description
+        ticket_form.status:
+          type: string
+        ticket_form.assigned_to:
+          type: string
+        ticket_form.labels:
+          type: string
+          description: Comma-separated tags
+        ticket_form.private:
+          type: boolean
+    TicketResponse:
+      type: object
+      properties:
+        ticket:
+          $ref: '#/components/schemas/Ticket'
+    Ticket:
+      type: object
+      properties:
+        ticket_num:
+          type: integer
+        summary:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+        assigned_to:
+          type: string
+        labels:
+          type: array
+          items:
+            type: string
+        created_date:
+          type: string
+          format: date-time
+        mod_date:
+          type: string
+          format: date-time
+        private:
+          type: boolean
+    TicketsResponse:
+      type: object
+      properties:
+        tickets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ticket'
+        count:
+          type: integer
+        page:
+          type: integer
+        limit:
+          type: integer
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 Bearer token
+    OAuth1:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: OAuth 1.0 authorization header

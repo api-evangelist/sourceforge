@@ -1,0 +1,134 @@
+openapi: 3.0.0
+info:
+  title: SourceForge Allura Admin Projects API
+  description: The SourceForge REST API provides programmatic access to project management, wikis, issue trackers, discussions, blogs, and administrative functions. All endpoints are prefixed with /rest/ and follow the project tool path pattern. Supports OAuth 2.0 and OAuth 1.0 authentication.
+  version: v1
+  contact:
+    name: SourceForge Support
+    url: https://sourceforge.net/p/forge/documentation/API/
+  license:
+    name: Apache License 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://sourceforge.net
+  description: SourceForge REST API
+security:
+- BearerAuth: []
+tags:
+- name: Projects
+  description: Project creation, retrieval, and permission management
+paths:
+  /rest/p/{project}:
+    get:
+      operationId: getProject
+      summary: Get Project
+      description: Retrieve details for a specific SourceForge project.
+      tags:
+      - Projects
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      responses:
+        '200':
+          description: Project details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Project not found
+  /rest/p/add_project:
+    post:
+      operationId: createProject
+      summary: Create Project
+      description: Create a new SourceForge project.
+      tags:
+      - Projects
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CreateProjectRequest'
+      responses:
+        '200':
+          description: Project created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+  /rest/p/{project}/has_access:
+    get:
+      operationId: checkProjectAccess
+      summary: Check Project Access
+      description: Check if the authenticated user has access to a project.
+      tags:
+      - Projects
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      responses:
+        '200':
+          description: Access check result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessResponse'
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    CreateProjectRequest:
+      type: object
+      required:
+      - shortname
+      - name
+      properties:
+        shortname:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+    ProjectResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        shortname:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+    AccessResponse:
+      type: object
+      properties:
+        has_access:
+          type: boolean
+        permissions:
+          type: array
+          items:
+            type: string
+  parameters:
+    ProjectId:
+      name: project
+      in: path
+      required: true
+      description: Project shortname/identifier
+      schema:
+        type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 Bearer token
+    OAuth1:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: OAuth 1.0 authorization header

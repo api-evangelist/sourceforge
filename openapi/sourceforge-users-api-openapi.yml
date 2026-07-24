@@ -1,0 +1,149 @@
+openapi: 3.0.0
+info:
+  title: SourceForge Allura Admin Users API
+  description: The SourceForge REST API provides programmatic access to project management, wikis, issue trackers, discussions, blogs, and administrative functions. All endpoints are prefixed with /rest/ and follow the project tool path pattern. Supports OAuth 2.0 and OAuth 1.0 authentication.
+  version: v1
+  contact:
+    name: SourceForge Support
+    url: https://sourceforge.net/p/forge/documentation/API/
+  license:
+    name: Apache License 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://sourceforge.net
+  description: SourceForge REST API
+security:
+- BearerAuth: []
+tags:
+- name: Users
+  description: User profile and authentication
+paths:
+  /rest/user:
+    get:
+      operationId: getCurrentUser
+      summary: Get Current User
+      description: Retrieve the authenticated user's profile.
+      tags:
+      - Users
+      responses:
+        '200':
+          description: User profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '401':
+          description: Unauthorized
+  /rest/auth/tools/{tool_type}:
+    get:
+      operationId: listUserTools
+      summary: List User Tools
+      description: List all tools of the specified type accessible to the authenticated user.
+      tags:
+      - Users
+      parameters:
+      - name: tool_type
+        in: path
+        required: true
+        description: Type of tool to list
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of user tools
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToolsResponse'
+        '401':
+          description: Unauthorized
+  /rest/oauth2/token:
+    post:
+      operationId: getOAuthToken
+      summary: Get OAuth2 Token
+      description: Exchange authorization code for OAuth2 access token.
+      tags:
+      - Users
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - grant_type
+              - code
+              properties:
+                grant_type:
+                  type: string
+                  enum:
+                  - authorization_code
+                code:
+                  type: string
+                redirect_uri:
+                  type: string
+                  format: uri
+                client_id:
+                  type: string
+                code_verifier:
+                  type: string
+                  description: PKCE code verifier
+      responses:
+        '200':
+          description: Access token response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+        expires_in:
+          type: integer
+        scope:
+          type: string
+    User:
+      type: object
+      properties:
+        username:
+          type: string
+        name:
+          type: string
+        url:
+          type: string
+          format: uri
+        created:
+          type: string
+          format: date-time
+    ToolsResponse:
+      type: object
+      properties:
+        tools:
+          type: array
+          items:
+            type: object
+    UserResponse:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 Bearer token
+    OAuth1:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: OAuth 1.0 authorization header

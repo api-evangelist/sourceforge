@@ -1,0 +1,174 @@
+openapi: 3.0.0
+info:
+  title: SourceForge Allura Admin Wikis API
+  description: The SourceForge REST API provides programmatic access to project management, wikis, issue trackers, discussions, blogs, and administrative functions. All endpoints are prefixed with /rest/ and follow the project tool path pattern. Supports OAuth 2.0 and OAuth 1.0 authentication.
+  version: v1
+  contact:
+    name: SourceForge Support
+    url: https://sourceforge.net/p/forge/documentation/API/
+  license:
+    name: Apache License 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://sourceforge.net
+  description: SourceForge REST API
+security:
+- BearerAuth: []
+tags:
+- name: Wikis
+  description: Project wiki page management
+paths:
+  /rest/p/{project}/{wiki}:
+    get:
+      operationId: listWikiPages
+      summary: List Wiki Pages
+      description: List all wiki pages for a project.
+      tags:
+      - Wikis
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - $ref: '#/components/parameters/WikiTool'
+      responses:
+        '200':
+          description: List of wiki pages
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WikiPagesResponse'
+        '404':
+          description: Project or wiki not found
+  /rest/p/{project}/{wiki}/{title}:
+    get:
+      operationId: getWikiPage
+      summary: Get Wiki Page
+      description: Retrieve a specific wiki page by title.
+      tags:
+      - Wikis
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - $ref: '#/components/parameters/WikiTool'
+      - name: title
+        in: path
+        required: true
+        description: Wiki page title
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Wiki page content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WikiPageResponse'
+        '404':
+          description: Wiki page not found
+    post:
+      operationId: createOrUpdateWikiPage
+      summary: Create Or Update Wiki Page
+      description: Create a new wiki page or update an existing one.
+      tags:
+      - Wikis
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - $ref: '#/components/parameters/WikiTool'
+      - name: title
+        in: path
+        required: true
+        description: Wiki page title
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/WikiPageRequest'
+      responses:
+        '200':
+          description: Wiki page created or updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WikiPageResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+components:
+  parameters:
+    WikiTool:
+      name: wiki
+      in: path
+      required: true
+      description: Wiki tool mount point (e.g., wiki, docs)
+      schema:
+        type: string
+    ProjectId:
+      name: project
+      in: path
+      required: true
+      description: Project shortname/identifier
+      schema:
+        type: string
+  schemas:
+    WikiPageRequest:
+      type: object
+      required:
+      - text
+      properties:
+        text:
+          type: string
+          description: Wiki page content in Markdown or text format
+        labels:
+          type: string
+          description: Comma-separated labels
+    WikiPageResponse:
+      type: object
+      properties:
+        title:
+          type: string
+        text:
+          type: string
+        labels:
+          type: array
+          items:
+            type: string
+        timestamp:
+          type: string
+          format: date-time
+    WikiPagesResponse:
+      type: object
+      properties:
+        pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/WikiPage'
+    WikiPage:
+      type: object
+      properties:
+        title:
+          type: string
+        text:
+          type: string
+        labels:
+          type: array
+          items:
+            type: string
+        timestamp:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        author:
+          type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 Bearer token
+    OAuth1:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: OAuth 1.0 authorization header

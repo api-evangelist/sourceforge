@@ -1,0 +1,203 @@
+openapi: 3.0.0
+info:
+  title: SourceForge Allura Admin Blog API
+  description: The SourceForge REST API provides programmatic access to project management, wikis, issue trackers, discussions, blogs, and administrative functions. All endpoints are prefixed with /rest/ and follow the project tool path pattern. Supports OAuth 2.0 and OAuth 1.0 authentication.
+  version: v1
+  contact:
+    name: SourceForge Support
+    url: https://sourceforge.net/p/forge/documentation/API/
+  license:
+    name: Apache License 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://sourceforge.net
+  description: SourceForge REST API
+security:
+- BearerAuth: []
+tags:
+- name: Blog
+  description: Project blog post management
+paths:
+  /rest/p/{project}/{blog}:
+    get:
+      operationId: listBlogPosts
+      summary: List Blog Posts
+      description: List all blog posts for a project.
+      tags:
+      - Blog
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - $ref: '#/components/parameters/BlogTool'
+      responses:
+        '200':
+          description: List of blog posts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlogPostsResponse'
+    post:
+      operationId: createBlogPost
+      summary: Create Blog Post
+      description: Create a new blog post for the project.
+      tags:
+      - Blog
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - $ref: '#/components/parameters/BlogTool'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BlogPostRequest'
+      responses:
+        '200':
+          description: Blog post created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlogPostResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+  /rest/p/{project}/{blog}/{year}/{month}/{title}:
+    get:
+      operationId: getBlogPost
+      summary: Get Blog Post
+      description: Retrieve a specific blog post.
+      tags:
+      - Blog
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - $ref: '#/components/parameters/BlogTool'
+      - name: year
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: month
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: title
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Blog post details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlogPostResponse'
+    post:
+      operationId: updateBlogPost
+      summary: Update Blog Post
+      description: Update an existing blog post.
+      tags:
+      - Blog
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - $ref: '#/components/parameters/BlogTool'
+      - name: year
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: month
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: title
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BlogPostRequest'
+      responses:
+        '200':
+          description: Blog post updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlogPostResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    BlogPostRequest:
+      type: object
+      required:
+      - title
+      - text
+      properties:
+        title:
+          type: string
+        text:
+          type: string
+        labels:
+          type: string
+    BlogPostResponse:
+      type: object
+      properties:
+        post:
+          $ref: '#/components/schemas/BlogPost'
+    BlogPostsResponse:
+      type: object
+      properties:
+        posts:
+          type: array
+          items:
+            $ref: '#/components/schemas/BlogPost'
+    BlogPost:
+      type: object
+      properties:
+        title:
+          type: string
+        text:
+          type: string
+        labels:
+          type: array
+          items:
+            type: string
+        timestamp:
+          type: string
+          format: date-time
+        author:
+          type: string
+  parameters:
+    BlogTool:
+      name: blog
+      in: path
+      required: true
+      description: Blog tool mount point (e.g., blog)
+      schema:
+        type: string
+    ProjectId:
+      name: project
+      in: path
+      required: true
+      description: Project shortname/identifier
+      schema:
+        type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 Bearer token
+    OAuth1:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: OAuth 1.0 authorization header
