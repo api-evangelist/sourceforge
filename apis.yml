@@ -6,9 +6,22 @@ description: >-
   forums, blogs, file releases, code repositories (Git, SVN, Mercurial), and a REST API for programmatic access to all
   project resources.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/sourceforge.png
 tags:
   - Open Source
   - Developer Tools
@@ -20,40 +33,149 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/sourceforge/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: sourceforge:sourceforge-allura-api
-    name: SourceForge Allura API
-    description: >-
-      The SourceForge REST API built on Apache Allura provides programmatic access to project management, wiki pages,
-      issue trackers, discussion forums, blogs, and administrative functions including webhooks. All endpoints follow
-      the /rest/p/{project}/{tool} path pattern with OAuth 2.0 and OAuth 1.0 authentication.
-    humanURL: https://sourceforge.net/p/forge/documentation/Allura%20API/
-    baseURL: https://sourceforge.net
-    tags:
-      - Projects
-      - Issues
-      - Wiki
-      - Discussions
-      - Blogs
-      - Webhooks
-    properties:
-      - type: Documentation
-        url: https://sourceforge.net/p/forge/documentation/Allura%20API/
-      - type: Reference
-        url: https://sourceforge.net/api-docs/
-      - type: Release API
-        url: https://sourceforge.net/p/forge/documentation/Using%20the%20Release%20API/
-      - type: Download Stats API
-        url: https://sourceforge.net/p/forge/documentation/Download%20Stats%20API/
-      - type: OAuth
-        url: https://sourceforge.net/auth/oauth/
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/sourceforge/refs/heads/main/openapi/sourceforge-allura-openapi.yml
-    contact:
-      - FN: SourceForge Support
-        url: https://sourceforge.net/p/forge/documentation/
-        email: ''
+- aid: sourceforge:sourceforge-admin-api
+  name: SourceForge Admin API
+  description: Administrative operations including exports, tool installation, and webhooks
+  humanURL: https://sourceforge.net/p/forge/documentation/Allura%20API/
+  baseURL: https://sourceforge.net
+  tags:
+  - Admin
+  properties:
+  - type: OpenAPI
+    url: openapi/sourceforge-admin-api-openapi.yml
+  - type: Documentation
+    url: https://sourceforge.net/p/forge/documentation/Allura%20API/
+  - type: Reference
+    url: https://sourceforge.net/api-docs/
+  - type: Release API
+    url: https://sourceforge.net/p/forge/documentation/Using%20the%20Release%20API/
+  - type: Download Stats API
+    url: https://sourceforge.net/p/forge/documentation/Download%20Stats%20API/
+  - type: OAuth
+    url: https://sourceforge.net/auth/oauth/
+- aid: sourceforge:sourceforge-blog-api
+  name: SourceForge Blog API
+  description: Project blog post management
+  humanURL: https://sourceforge.net/p/forge/documentation/Allura%20API/
+  baseURL: https://sourceforge.net
+  tags:
+  - Blog
+  properties:
+  - type: OpenAPI
+    url: openapi/sourceforge-blog-api-openapi.yml
+  - type: Documentation
+    url: https://sourceforge.net/p/forge/documentation/Allura%20API/
+  - type: Reference
+    url: https://sourceforge.net/api-docs/
+  - type: Release API
+    url: https://sourceforge.net/p/forge/documentation/Using%20the%20Release%20API/
+  - type: Download Stats API
+    url: https://sourceforge.net/p/forge/documentation/Download%20Stats%20API/
+  - type: OAuth
+    url: https://sourceforge.net/auth/oauth/
+- aid: sourceforge:sourceforge-discussion-api
+  name: SourceForge Discussion API
+  description: Forum and discussion thread management
+  humanURL: https://sourceforge.net/p/forge/documentation/Allura%20API/
+  baseURL: https://sourceforge.net
+  tags:
+  - Discussion
+  properties:
+  - type: OpenAPI
+    url: openapi/sourceforge-discussion-api-openapi.yml
+  - type: Documentation
+    url: https://sourceforge.net/p/forge/documentation/Allura%20API/
+  - type: Reference
+    url: https://sourceforge.net/api-docs/
+  - type: Release API
+    url: https://sourceforge.net/p/forge/documentation/Using%20the%20Release%20API/
+  - type: Download Stats API
+    url: https://sourceforge.net/p/forge/documentation/Download%20Stats%20API/
+  - type: OAuth
+    url: https://sourceforge.net/auth/oauth/
+- aid: sourceforge:sourceforge-projects-api
+  name: SourceForge Projects API
+  description: Project creation, retrieval, and permission management
+  humanURL: https://sourceforge.net/p/forge/documentation/Allura%20API/
+  baseURL: https://sourceforge.net
+  tags:
+  - Projects
+  properties:
+  - type: OpenAPI
+    url: openapi/sourceforge-projects-api-openapi.yml
+  - type: Documentation
+    url: https://sourceforge.net/p/forge/documentation/Allura%20API/
+  - type: Reference
+    url: https://sourceforge.net/api-docs/
+  - type: Release API
+    url: https://sourceforge.net/p/forge/documentation/Using%20the%20Release%20API/
+  - type: Download Stats API
+    url: https://sourceforge.net/p/forge/documentation/Download%20Stats%20API/
+  - type: OAuth
+    url: https://sourceforge.net/auth/oauth/
+- aid: sourceforge:sourceforge-tracker-api
+  name: SourceForge Tracker API
+  description: Issue and ticket tracking
+  humanURL: https://sourceforge.net/p/forge/documentation/Allura%20API/
+  baseURL: https://sourceforge.net
+  tags:
+  - Tracker
+  properties:
+  - type: OpenAPI
+    url: openapi/sourceforge-tracker-api-openapi.yml
+  - type: Documentation
+    url: https://sourceforge.net/p/forge/documentation/Allura%20API/
+  - type: Reference
+    url: https://sourceforge.net/api-docs/
+  - type: Release API
+    url: https://sourceforge.net/p/forge/documentation/Using%20the%20Release%20API/
+  - type: Download Stats API
+    url: https://sourceforge.net/p/forge/documentation/Download%20Stats%20API/
+  - type: OAuth
+    url: https://sourceforge.net/auth/oauth/
+- aid: sourceforge:sourceforge-users-api
+  name: SourceForge Users API
+  description: User profile and authentication
+  humanURL: https://sourceforge.net/p/forge/documentation/Allura%20API/
+  baseURL: https://sourceforge.net
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/sourceforge-users-api-openapi.yml
+  - type: Documentation
+    url: https://sourceforge.net/p/forge/documentation/Allura%20API/
+  - type: Reference
+    url: https://sourceforge.net/api-docs/
+  - type: Release API
+    url: https://sourceforge.net/p/forge/documentation/Using%20the%20Release%20API/
+  - type: Download Stats API
+    url: https://sourceforge.net/p/forge/documentation/Download%20Stats%20API/
+  - type: OAuth
+    url: https://sourceforge.net/auth/oauth/
+- aid: sourceforge:sourceforge-wikis-api
+  name: SourceForge Wikis API
+  description: Project wiki page management
+  humanURL: https://sourceforge.net/p/forge/documentation/Allura%20API/
+  baseURL: https://sourceforge.net
+  tags:
+  - Wikis
+  properties:
+  - type: OpenAPI
+    url: openapi/sourceforge-wikis-api-openapi.yml
+  - type: Documentation
+    url: https://sourceforge.net/p/forge/documentation/Allura%20API/
+  - type: Reference
+    url: https://sourceforge.net/api-docs/
+  - type: Release API
+    url: https://sourceforge.net/p/forge/documentation/Using%20the%20Release%20API/
+  - type: Download Stats API
+    url: https://sourceforge.net/p/forge/documentation/Download%20Stats%20API/
+  - type: OAuth
+    url: https://sourceforge.net/auth/oauth/
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/sourceforge/overview
   - type: AgenticAccess
     url: agentic-access/sourceforge-agentic-access.yml
   - type: VulnerabilityDisclosure
