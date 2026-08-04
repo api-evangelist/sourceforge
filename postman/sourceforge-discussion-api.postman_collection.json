@@ -1,0 +1,431 @@
+{
+  "info": {
+    "_postman_id": "0f0eb636-7c11-42fa-8128-82131ea85361",
+    "name": "SourceForge Allura Admin Discussion API",
+    "description": "The SourceForge REST API provides programmatic access to project management, wikis, issue trackers, discussions, blogs, and administrative functions. All endpoints are prefixed with /rest/ and follow the project tool path pattern. Supports OAuth 2.0 and OAuth 1.0 authentication.\n\nContact Support:\n Name: SourceForge Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:59:28.000Z",
+    "updatedAt": "2026-07-28T02:59:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0f0eb636-7c11-42fa-8128-82131ea85361"
+  },
+  "item": [
+    {
+      "name": "rest",
+      "item": [
+        {
+          "name": "p",
+          "item": [
+            {
+              "name": "{project}",
+              "item": [
+                {
+                  "name": "{discussion}",
+                  "item": [
+                    {
+                      "name": "{forum}",
+                      "item": [
+                        {
+                          "name": "thread",
+                          "item": [
+                            {
+                              "name": "{thread}",
+                              "item": [
+                                {
+                                  "name": "List Thread Posts",
+                                  "id": "cbf94b85-a0e0-4730-b12b-eb792b9f2850",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/rest/p/:project/:discussion/:forum/thread/:thread",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "rest",
+                                        "p",
+                                        ":project",
+                                        ":discussion",
+                                        ":forum",
+                                        "thread",
+                                        ":thread"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "f42bc614-fa40-43ee-bae1-d42ec0186d12",
+                                          "key": "project",
+                                          "value": "<string>",
+                                          "description": "(Required) Project shortname/identifier"
+                                        },
+                                        {
+                                          "id": "1f3ae363-eab0-4330-8f9c-5b4649041a8b",
+                                          "key": "discussion",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "a716b95c-6480-4817-9261-39ea66f248f1",
+                                          "key": "forum",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "81c8e547-4d30-4195-8263-afe0f017e316",
+                                          "key": "thread",
+                                          "value": "<string>",
+                                          "description": "(Required) Thread identifier"
+                                        }
+                                      ]
+                                    },
+                                    "description": "List all posts in a discussion thread."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "41adaae7-c3c5-40e0-9c50-c500960d4fc4",
+                                      "name": "Thread posts",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/rest/p/:project/:discussion/:forum/thread/:thread",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "rest",
+                                            "p",
+                                            ":project",
+                                            ":discussion",
+                                            ":forum",
+                                            "thread",
+                                            ":thread"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "project"
+                                            },
+                                            {
+                                              "key": "discussion"
+                                            },
+                                            {
+                                              "key": "forum"
+                                            },
+                                            {
+                                              "key": "thread"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{}",
+                                      "createdAt": "2026-07-28T02:59:28.000Z",
+                                      "updatedAt": "2026-07-28T02:59:28.000Z",
+                                      "uid": "35240-41adaae7-c3c5-40e0-9c50-c500960d4fc4"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T02:59:28.000Z",
+                                  "updatedAt": "2026-07-28T02:59:28.000Z",
+                                  "uid": "35240-cbf94b85-a0e0-4730-b12b-eb792b9f2850"
+                                }
+                              ],
+                              "id": "e2db8dc7-97dc-440b-9820-9c41eb19ebfd",
+                              "createdAt": "2026-07-28T02:59:28.000Z",
+                              "updatedAt": "2026-07-28T02:59:28.000Z",
+                              "uid": "35240-e2db8dc7-97dc-440b-9820-9c41eb19ebfd"
+                            }
+                          ],
+                          "id": "0c648731-bafc-4e20-a972-d1c35eb2ae40",
+                          "createdAt": "2026-07-28T02:59:28.000Z",
+                          "updatedAt": "2026-07-28T02:59:28.000Z",
+                          "uid": "35240-0c648731-bafc-4e20-a972-d1c35eb2ae40"
+                        },
+                        {
+                          "name": "List Forum Topics",
+                          "id": "6fff2434-a1a6-46a4-985b-65868b52fd9c",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/p/:project/:discussion/:forum",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "p",
+                                ":project",
+                                ":discussion",
+                                ":forum"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "ff6ad52b-7c2d-4a2d-a39a-a3391ee81893",
+                                  "key": "project",
+                                  "value": "<string>",
+                                  "description": "(Required) Project shortname/identifier"
+                                },
+                                {
+                                  "id": "481e329a-db1d-41f7-a375-19334335abb0",
+                                  "key": "discussion",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "10ec73ba-7669-4e6a-9369-75a3d2515255",
+                                  "key": "forum",
+                                  "value": "<string>",
+                                  "description": "(Required) Forum identifier"
+                                }
+                              ]
+                            },
+                            "description": "Get topics in a specific discussion forum."
+                          },
+                          "response": [
+                            {
+                              "id": "114e296d-d37f-4367-83f9-72aac28830f9",
+                              "name": "Forum topics",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/rest/p/:project/:discussion/:forum",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "rest",
+                                    "p",
+                                    ":project",
+                                    ":discussion",
+                                    ":forum"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "project"
+                                    },
+                                    {
+                                      "key": "discussion"
+                                    },
+                                    {
+                                      "key": "forum"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T02:59:28.000Z",
+                              "updatedAt": "2026-07-28T02:59:28.000Z",
+                              "uid": "35240-114e296d-d37f-4367-83f9-72aac28830f9"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:59:28.000Z",
+                          "updatedAt": "2026-07-28T02:59:28.000Z",
+                          "uid": "35240-6fff2434-a1a6-46a4-985b-65868b52fd9c"
+                        }
+                      ],
+                      "id": "d0aa94d3-3c84-4979-9cda-fe5a8fdeb532",
+                      "createdAt": "2026-07-28T02:59:28.000Z",
+                      "updatedAt": "2026-07-28T02:59:28.000Z",
+                      "uid": "35240-d0aa94d3-3c84-4979-9cda-fe5a8fdeb532"
+                    },
+                    {
+                      "name": "List Discussion Forums",
+                      "id": "8d5539d6-fac1-42d5-ac2e-a3bc2c9ba536",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/p/:project/:discussion",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "p",
+                            ":project",
+                            ":discussion"
+                          ],
+                          "variable": [
+                            {
+                              "id": "0820095d-851c-4e03-9c44-b9fed257ad59",
+                              "key": "project",
+                              "value": "<string>",
+                              "description": "(Required) Project shortname/identifier"
+                            },
+                            {
+                              "id": "ebedcb39-a5f1-424e-b96c-604e8875e20b",
+                              "key": "discussion",
+                              "value": "<string>",
+                              "description": "(Required) Discussion tool mount point"
+                            }
+                          ]
+                        },
+                        "description": "List all forums in the project discussion area."
+                      },
+                      "response": [
+                        {
+                          "id": "d6274e3b-c754-4896-9ca2-d0cfc36dab0b",
+                          "name": "List of forums",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/p/:project/:discussion",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "p",
+                                ":project",
+                                ":discussion"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "project"
+                                },
+                                {
+                                  "key": "discussion"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"forums\": [\n    {\n      \"name\": \"<string>\",\n      \"shortname\": \"<string>\",\n      \"description\": \"<string>\",\n      \"num_topics\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"shortname\": \"<string>\",\n      \"description\": \"<string>\",\n      \"num_topics\": \"<integer>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:59:28.000Z",
+                          "updatedAt": "2026-07-28T02:59:28.000Z",
+                          "uid": "35240-d6274e3b-c754-4896-9ca2-d0cfc36dab0b"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:59:28.000Z",
+                      "updatedAt": "2026-07-28T02:59:28.000Z",
+                      "uid": "35240-8d5539d6-fac1-42d5-ac2e-a3bc2c9ba536"
+                    }
+                  ],
+                  "id": "dbb71afb-22a5-4d8b-a956-3e9ce11f229d",
+                  "createdAt": "2026-07-28T02:59:28.000Z",
+                  "updatedAt": "2026-07-28T02:59:28.000Z",
+                  "uid": "35240-dbb71afb-22a5-4d8b-a956-3e9ce11f229d"
+                }
+              ],
+              "id": "a86b203c-55b1-4638-9aeb-4719163ceaf1",
+              "createdAt": "2026-07-28T02:59:28.000Z",
+              "updatedAt": "2026-07-28T02:59:28.000Z",
+              "uid": "35240-a86b203c-55b1-4638-9aeb-4719163ceaf1"
+            }
+          ],
+          "id": "99c4e570-cb21-4e42-9a26-a14a83365a5f",
+          "createdAt": "2026-07-28T02:59:28.000Z",
+          "updatedAt": "2026-07-28T02:59:28.000Z",
+          "uid": "35240-99c4e570-cb21-4e42-9a26-a14a83365a5f"
+        }
+      ],
+      "id": "0fc23d25-b6d1-44f8-b505-d265ea595b52",
+      "createdAt": "2026-07-28T02:59:28.000Z",
+      "updatedAt": "2026-07-28T02:59:28.000Z",
+      "uid": "35240-0fc23d25-b6d1-44f8-b505-d265ea595b52"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sourceforge.net"
+    }
+  ]
+}

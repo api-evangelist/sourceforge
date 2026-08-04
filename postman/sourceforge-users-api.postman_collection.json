@@ -1,0 +1,610 @@
+{
+  "info": {
+    "_postman_id": "b5b9bf8f-6ab8-4da4-ad33-90f61dc088e3",
+    "name": "SourceForge Allura Admin Users API",
+    "description": "The SourceForge REST API provides programmatic access to project management, wikis, issue trackers, discussions, blogs, and administrative functions. All endpoints are prefixed with /rest/ and follow the project tool path pattern. Supports OAuth 2.0 and OAuth 1.0 authentication.\n\nContact Support:\n Name: SourceForge Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:59:34.000Z",
+    "updatedAt": "2026-07-28T02:59:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b5b9bf8f-6ab8-4da4-ad33-90f61dc088e3"
+  },
+  "item": [
+    {
+      "name": "rest",
+      "item": [
+        {
+          "name": "user",
+          "item": [
+            {
+              "name": "Get Current User",
+              "id": "2eb4bba0-5534-47ec-a4a4-7dc3ee0610fe",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/rest/user",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "rest",
+                    "user"
+                  ]
+                },
+                "description": "Retrieve the authenticated user's profile."
+              },
+              "response": [
+                {
+                  "id": "5d763829-3a6e-4dea-8319-09bf6be55263",
+                  "name": "User profile",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/user",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "user"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"user\": {\n    \"username\": \"<string>\",\n    \"name\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"created\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:59:35.000Z",
+                  "updatedAt": "2026-07-28T02:59:35.000Z",
+                  "uid": "35240-5d763829-3a6e-4dea-8319-09bf6be55263"
+                },
+                {
+                  "id": "47edbef8-073d-44ac-8747-4128a9118eaf",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/user",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "user"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:59:35.000Z",
+                  "updatedAt": "2026-07-28T02:59:35.000Z",
+                  "uid": "35240-47edbef8-073d-44ac-8747-4128a9118eaf"
+                }
+              ],
+              "createdAt": "2026-07-28T02:59:35.000Z",
+              "updatedAt": "2026-07-28T02:59:35.000Z",
+              "uid": "35240-2eb4bba0-5534-47ec-a4a4-7dc3ee0610fe"
+            }
+          ],
+          "id": "05cb817c-1408-40c4-8a86-610b281a9b3c",
+          "createdAt": "2026-07-28T02:59:35.000Z",
+          "updatedAt": "2026-07-28T02:59:35.000Z",
+          "uid": "35240-05cb817c-1408-40c4-8a86-610b281a9b3c"
+        },
+        {
+          "name": "auth",
+          "item": [
+            {
+              "name": "tools",
+              "item": [
+                {
+                  "name": "{tool_type}",
+                  "item": [
+                    {
+                      "name": "List User Tools",
+                      "id": "3e095330-38e1-4d93-a6ae-86f2887e2607",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/auth/tools/:tool_type",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "auth",
+                            "tools",
+                            ":tool_type"
+                          ],
+                          "variable": [
+                            {
+                              "id": "2305afe4-a85d-48d4-b1d1-7389f0c85718",
+                              "key": "tool_type",
+                              "value": "<string>",
+                              "description": "(Required) Type of tool to list"
+                            }
+                          ]
+                        },
+                        "description": "List all tools of the specified type accessible to the authenticated user."
+                      },
+                      "response": [
+                        {
+                          "id": "927d2f68-6334-48b3-a5dc-1fb1c77cdd2b",
+                          "name": "List of user tools",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/auth/tools/:tool_type",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "auth",
+                                "tools",
+                                ":tool_type"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "tool_type"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T02:59:35.000Z",
+                          "updatedAt": "2026-07-28T02:59:35.000Z",
+                          "uid": "35240-927d2f68-6334-48b3-a5dc-1fb1c77cdd2b"
+                        },
+                        {
+                          "id": "2e96e61b-8a10-4a87-8fc3-dd335a522389",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/auth/tools/:tool_type",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "auth",
+                                "tools",
+                                ":tool_type"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "tool_type"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:59:35.000Z",
+                          "updatedAt": "2026-07-28T02:59:35.000Z",
+                          "uid": "35240-2e96e61b-8a10-4a87-8fc3-dd335a522389"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:59:35.000Z",
+                      "updatedAt": "2026-07-28T02:59:35.000Z",
+                      "uid": "35240-3e095330-38e1-4d93-a6ae-86f2887e2607"
+                    }
+                  ],
+                  "id": "0f9f5efd-68e7-4e85-a651-1f77be20e92e",
+                  "createdAt": "2026-07-28T02:59:35.000Z",
+                  "updatedAt": "2026-07-28T02:59:35.000Z",
+                  "uid": "35240-0f9f5efd-68e7-4e85-a651-1f77be20e92e"
+                }
+              ],
+              "id": "7c59dfeb-c408-4edc-992f-5f013ed5c51e",
+              "createdAt": "2026-07-28T02:59:35.000Z",
+              "updatedAt": "2026-07-28T02:59:35.000Z",
+              "uid": "35240-7c59dfeb-c408-4edc-992f-5f013ed5c51e"
+            }
+          ],
+          "id": "7ef6ccaa-1607-4650-ace2-8d5094ef562a",
+          "createdAt": "2026-07-28T02:59:35.000Z",
+          "updatedAt": "2026-07-28T02:59:35.000Z",
+          "uid": "35240-7ef6ccaa-1607-4650-ace2-8d5094ef562a"
+        },
+        {
+          "name": "oauth2",
+          "item": [
+            {
+              "name": "token",
+              "item": [
+                {
+                  "name": "Get OAuth2 Token",
+                  "id": "304fb046-20cd-4ccb-9762-8c88d47c84f0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) ",
+                          "key": "grant_type",
+                          "value": "authorization_code"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "code",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "redirect_uri",
+                          "value": "<uri>"
+                        },
+                        {
+                          "key": "client_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "PKCE code verifier",
+                          "key": "code_verifier",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/oauth2/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "oauth2",
+                        "token"
+                      ]
+                    },
+                    "description": "Exchange authorization code for OAuth2 access token."
+                  },
+                  "response": [
+                    {
+                      "id": "a71d708d-ed52-4afa-a8a8-ae3f76e26194",
+                      "name": "Access token response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) ",
+                              "key": "grant_type",
+                              "value": "authorization_code"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "code",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "redirect_uri",
+                              "value": "<uri>"
+                            },
+                            {
+                              "key": "client_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "PKCE code verifier",
+                              "key": "code_verifier",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/oauth2/token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "oauth2",
+                            "token"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"access_token\": \"<string>\",\n  \"token_type\": \"<string>\",\n  \"expires_in\": \"<integer>\",\n  \"scope\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:59:35.000Z",
+                      "updatedAt": "2026-07-28T02:59:35.000Z",
+                      "uid": "35240-a71d708d-ed52-4afa-a8a8-ae3f76e26194"
+                    },
+                    {
+                      "id": "060f0133-082b-4677-8930-9c89c50516bd",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) ",
+                              "key": "grant_type",
+                              "value": "authorization_code"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "code",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "redirect_uri",
+                              "value": "<uri>"
+                            },
+                            {
+                              "key": "client_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "PKCE code verifier",
+                              "key": "code_verifier",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/oauth2/token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "oauth2",
+                            "token"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:59:35.000Z",
+                      "updatedAt": "2026-07-28T02:59:35.000Z",
+                      "uid": "35240-060f0133-082b-4677-8930-9c89c50516bd"
+                    },
+                    {
+                      "id": "efa4aa91-d168-4da7-aef9-c125910017c4",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) ",
+                              "key": "grant_type",
+                              "value": "authorization_code"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "code",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "redirect_uri",
+                              "value": "<uri>"
+                            },
+                            {
+                              "key": "client_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "PKCE code verifier",
+                              "key": "code_verifier",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/oauth2/token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "oauth2",
+                            "token"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:59:35.000Z",
+                      "updatedAt": "2026-07-28T02:59:35.000Z",
+                      "uid": "35240-efa4aa91-d168-4da7-aef9-c125910017c4"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:59:35.000Z",
+                  "updatedAt": "2026-07-28T02:59:35.000Z",
+                  "uid": "35240-304fb046-20cd-4ccb-9762-8c88d47c84f0"
+                }
+              ],
+              "id": "0841ccdd-60b8-4c0f-8681-8fb12f3c4d2d",
+              "createdAt": "2026-07-28T02:59:35.000Z",
+              "updatedAt": "2026-07-28T02:59:35.000Z",
+              "uid": "35240-0841ccdd-60b8-4c0f-8681-8fb12f3c4d2d"
+            }
+          ],
+          "id": "c92eecc1-d8a4-4d40-913a-193619d22167",
+          "createdAt": "2026-07-28T02:59:35.000Z",
+          "updatedAt": "2026-07-28T02:59:35.000Z",
+          "uid": "35240-c92eecc1-d8a4-4d40-913a-193619d22167"
+        }
+      ],
+      "id": "e44f52ab-e799-40fc-9e23-7b2d6cf5ee70",
+      "createdAt": "2026-07-28T02:59:35.000Z",
+      "updatedAt": "2026-07-28T02:59:35.000Z",
+      "uid": "35240-e44f52ab-e799-40fc-9e23-7b2d6cf5ee70"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sourceforge.net"
+    }
+  ]
+}

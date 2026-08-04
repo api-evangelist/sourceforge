@@ -1,0 +1,664 @@
+{
+  "info": {
+    "_postman_id": "14e12546-ad19-458a-80d2-3467105cc7ae",
+    "name": "SourceForge Allura Admin Wikis API",
+    "description": "The SourceForge REST API provides programmatic access to project management, wikis, issue trackers, discussions, blogs, and administrative functions. All endpoints are prefixed with /rest/ and follow the project tool path pattern. Supports OAuth 2.0 and OAuth 1.0 authentication.\n\nContact Support:\n Name: SourceForge Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:59:35.000Z",
+    "updatedAt": "2026-07-28T02:59:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-14e12546-ad19-458a-80d2-3467105cc7ae"
+  },
+  "item": [
+    {
+      "name": "rest",
+      "item": [
+        {
+          "name": "p",
+          "item": [
+            {
+              "name": "{project}",
+              "item": [
+                {
+                  "name": "{wiki}",
+                  "item": [
+                    {
+                      "name": "{title}",
+                      "item": [
+                        {
+                          "name": "Get Wiki Page",
+                          "id": "a1947fc0-b09b-4eaa-b5ab-e4376d2e87bc",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/p/:project/:wiki/:title",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "p",
+                                ":project",
+                                ":wiki",
+                                ":title"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "545a4e5b-5b09-466e-a0f4-52ae5bff1ca9",
+                                  "key": "project",
+                                  "value": "<string>",
+                                  "description": "(Required) Project shortname/identifier"
+                                },
+                                {
+                                  "id": "7d785f15-3323-45b2-882b-45c87ad2d846",
+                                  "key": "wiki",
+                                  "value": "<string>",
+                                  "description": "(Required) Wiki tool mount point (e.g., wiki, docs)"
+                                },
+                                {
+                                  "id": "6c17d90e-8f80-4c3e-959e-7e58346e0d01",
+                                  "key": "title",
+                                  "value": "<string>",
+                                  "description": "(Required) Wiki page title"
+                                }
+                              ]
+                            },
+                            "description": "Retrieve a specific wiki page by title."
+                          },
+                          "response": [
+                            {
+                              "id": "e88847a3-8fb8-4373-a717-6e1c296b14fa",
+                              "name": "Wiki page content",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/rest/p/:project/:wiki/:title",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "rest",
+                                    "p",
+                                    ":project",
+                                    ":wiki",
+                                    ":title"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "project"
+                                    },
+                                    {
+                                      "key": "wiki"
+                                    },
+                                    {
+                                      "key": "title"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"title\": \"<string>\",\n  \"text\": \"<string>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"timestamp\": \"<dateTime>\"\n}",
+                              "createdAt": "2026-07-28T02:59:36.000Z",
+                              "updatedAt": "2026-07-28T02:59:36.000Z",
+                              "uid": "35240-e88847a3-8fb8-4373-a717-6e1c296b14fa"
+                            },
+                            {
+                              "id": "b50807a2-7da4-4206-91bb-22801278907e",
+                              "name": "Wiki page not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/rest/p/:project/:wiki/:title",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "rest",
+                                    "p",
+                                    ":project",
+                                    ":wiki",
+                                    ":title"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "project"
+                                    },
+                                    {
+                                      "key": "wiki"
+                                    },
+                                    {
+                                      "key": "title"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:59:36.000Z",
+                              "updatedAt": "2026-07-28T02:59:36.000Z",
+                              "uid": "35240-b50807a2-7da4-4206-91bb-22801278907e"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:59:36.000Z",
+                          "updatedAt": "2026-07-28T02:59:36.000Z",
+                          "uid": "35240-a1947fc0-b09b-4eaa-b5ab-e4376d2e87bc"
+                        },
+                        {
+                          "name": "Create Or Update Wiki Page",
+                          "id": "d5cfd96f-9e76-4ecf-849f-ead871fcc3a4",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "description": "(Required) Wiki page content in Markdown or text format",
+                                  "key": "text",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Comma-separated labels",
+                                  "key": "labels",
+                                  "value": "<string>"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/p/:project/:wiki/:title",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "p",
+                                ":project",
+                                ":wiki",
+                                ":title"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "1820241c-f119-4dcd-a437-b9878a00d38c",
+                                  "key": "project",
+                                  "value": "<string>",
+                                  "description": "(Required) Project shortname/identifier"
+                                },
+                                {
+                                  "id": "9ffd59ad-4f5c-4445-93ca-53618544be30",
+                                  "key": "wiki",
+                                  "value": "<string>",
+                                  "description": "(Required) Wiki tool mount point (e.g., wiki, docs)"
+                                },
+                                {
+                                  "id": "83d796fe-ba0f-47ce-b4e1-c776050ec251",
+                                  "key": "title",
+                                  "value": "<string>",
+                                  "description": "(Required) Wiki page title"
+                                }
+                              ]
+                            },
+                            "description": "Create a new wiki page or update an existing one."
+                          },
+                          "response": [
+                            {
+                              "id": "ae7eb091-772a-4ef2-aec6-7684731a2670",
+                              "name": "Wiki page created or updated",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/x-www-form-urlencoded"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "urlencoded",
+                                  "urlencoded": [
+                                    {
+                                      "description": "(Required) Wiki page content in Markdown or text format",
+                                      "key": "text",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Comma-separated labels",
+                                      "key": "labels",
+                                      "value": "<string>"
+                                    }
+                                  ]
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/rest/p/:project/:wiki/:title",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "rest",
+                                    "p",
+                                    ":project",
+                                    ":wiki",
+                                    ":title"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "project"
+                                    },
+                                    {
+                                      "key": "wiki"
+                                    },
+                                    {
+                                      "key": "title"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"title\": \"<string>\",\n  \"text\": \"<string>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"timestamp\": \"<dateTime>\"\n}",
+                              "createdAt": "2026-07-28T02:59:36.000Z",
+                              "updatedAt": "2026-07-28T02:59:36.000Z",
+                              "uid": "35240-ae7eb091-772a-4ef2-aec6-7684731a2670"
+                            },
+                            {
+                              "id": "b7a226ce-5418-4332-b78a-a2641d5f869c",
+                              "name": "Bad request",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/x-www-form-urlencoded"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "urlencoded",
+                                  "urlencoded": [
+                                    {
+                                      "description": "(Required) Wiki page content in Markdown or text format",
+                                      "key": "text",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Comma-separated labels",
+                                      "key": "labels",
+                                      "value": "<string>"
+                                    }
+                                  ]
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/rest/p/:project/:wiki/:title",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "rest",
+                                    "p",
+                                    ":project",
+                                    ":wiki",
+                                    ":title"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "project"
+                                    },
+                                    {
+                                      "key": "wiki"
+                                    },
+                                    {
+                                      "key": "title"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:59:36.000Z",
+                              "updatedAt": "2026-07-28T02:59:36.000Z",
+                              "uid": "35240-b7a226ce-5418-4332-b78a-a2641d5f869c"
+                            },
+                            {
+                              "id": "8fd936ec-5911-4081-aa34-74664f932c37",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/x-www-form-urlencoded"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "urlencoded",
+                                  "urlencoded": [
+                                    {
+                                      "description": "(Required) Wiki page content in Markdown or text format",
+                                      "key": "text",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Comma-separated labels",
+                                      "key": "labels",
+                                      "value": "<string>"
+                                    }
+                                  ]
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/rest/p/:project/:wiki/:title",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "rest",
+                                    "p",
+                                    ":project",
+                                    ":wiki",
+                                    ":title"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "project"
+                                    },
+                                    {
+                                      "key": "wiki"
+                                    },
+                                    {
+                                      "key": "title"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:59:36.000Z",
+                              "updatedAt": "2026-07-28T02:59:36.000Z",
+                              "uid": "35240-8fd936ec-5911-4081-aa34-74664f932c37"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:59:36.000Z",
+                          "updatedAt": "2026-07-28T02:59:36.000Z",
+                          "uid": "35240-d5cfd96f-9e76-4ecf-849f-ead871fcc3a4"
+                        }
+                      ],
+                      "id": "2a5dc5d3-b978-4a5a-90db-89530215f599",
+                      "createdAt": "2026-07-28T02:59:36.000Z",
+                      "updatedAt": "2026-07-28T02:59:36.000Z",
+                      "uid": "35240-2a5dc5d3-b978-4a5a-90db-89530215f599"
+                    },
+                    {
+                      "name": "List Wiki Pages",
+                      "id": "866c39a1-55ee-4e29-bbca-105bcc379148",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/p/:project/:wiki",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "p",
+                            ":project",
+                            ":wiki"
+                          ],
+                          "variable": [
+                            {
+                              "id": "5b4d5904-9c51-4ea5-8f44-11dd0718d5ca",
+                              "key": "project",
+                              "value": "<string>",
+                              "description": "(Required) Project shortname/identifier"
+                            },
+                            {
+                              "id": "9965d71d-2d3f-4062-b3fd-aac94a441674",
+                              "key": "wiki",
+                              "value": "<string>",
+                              "description": "(Required) Wiki tool mount point (e.g., wiki, docs)"
+                            }
+                          ]
+                        },
+                        "description": "List all wiki pages for a project."
+                      },
+                      "response": [
+                        {
+                          "id": "8b70d142-3504-474e-bcf7-90d6719a913e",
+                          "name": "List of wiki pages",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/p/:project/:wiki",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "p",
+                                ":project",
+                                ":wiki"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "project"
+                                },
+                                {
+                                  "key": "wiki"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"pages\": [\n    {\n      \"title\": \"<string>\",\n      \"text\": \"<string>\",\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"timestamp\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\",\n      \"author\": \"<string>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"text\": \"<string>\",\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"timestamp\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\",\n      \"author\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:59:36.000Z",
+                          "updatedAt": "2026-07-28T02:59:36.000Z",
+                          "uid": "35240-8b70d142-3504-474e-bcf7-90d6719a913e"
+                        },
+                        {
+                          "id": "8c21dc4c-505b-4733-94ba-b5d5a14de1ea",
+                          "name": "Project or wiki not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/p/:project/:wiki",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "p",
+                                ":project",
+                                ":wiki"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "project"
+                                },
+                                {
+                                  "key": "wiki"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:59:36.000Z",
+                          "updatedAt": "2026-07-28T02:59:36.000Z",
+                          "uid": "35240-8c21dc4c-505b-4733-94ba-b5d5a14de1ea"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:59:36.000Z",
+                      "updatedAt": "2026-07-28T02:59:36.000Z",
+                      "uid": "35240-866c39a1-55ee-4e29-bbca-105bcc379148"
+                    }
+                  ],
+                  "id": "5a4b53e7-67e2-4410-8fa6-d13bc5e27357",
+                  "createdAt": "2026-07-28T02:59:36.000Z",
+                  "updatedAt": "2026-07-28T02:59:36.000Z",
+                  "uid": "35240-5a4b53e7-67e2-4410-8fa6-d13bc5e27357"
+                }
+              ],
+              "id": "2d66dfa2-fc41-4a3f-ae78-c9848f394b7c",
+              "createdAt": "2026-07-28T02:59:36.000Z",
+              "updatedAt": "2026-07-28T02:59:36.000Z",
+              "uid": "35240-2d66dfa2-fc41-4a3f-ae78-c9848f394b7c"
+            }
+          ],
+          "id": "b7585ccf-8229-43e9-aeac-7d15d15d56c4",
+          "createdAt": "2026-07-28T02:59:36.000Z",
+          "updatedAt": "2026-07-28T02:59:36.000Z",
+          "uid": "35240-b7585ccf-8229-43e9-aeac-7d15d15d56c4"
+        }
+      ],
+      "id": "ae21cf23-4337-492a-b31d-b49542ebf7c5",
+      "createdAt": "2026-07-28T02:59:36.000Z",
+      "updatedAt": "2026-07-28T02:59:36.000Z",
+      "uid": "35240-ae21cf23-4337-492a-b31d-b49542ebf7c5"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sourceforge.net"
+    }
+  ]
+}

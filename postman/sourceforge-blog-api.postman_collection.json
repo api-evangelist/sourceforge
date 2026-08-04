@@ -1,0 +1,947 @@
+{
+  "info": {
+    "_postman_id": "963a2e3d-7838-4886-9003-62ff254943c4",
+    "name": "SourceForge Allura Admin Blog API",
+    "description": "The SourceForge REST API provides programmatic access to project management, wikis, issue trackers, discussions, blogs, and administrative functions. All endpoints are prefixed with /rest/ and follow the project tool path pattern. Supports OAuth 2.0 and OAuth 1.0 authentication.\n\nContact Support:\n Name: SourceForge Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:59:27.000Z",
+    "updatedAt": "2026-07-28T02:59:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-963a2e3d-7838-4886-9003-62ff254943c4"
+  },
+  "item": [
+    {
+      "name": "rest",
+      "item": [
+        {
+          "name": "p",
+          "item": [
+            {
+              "name": "{project}",
+              "item": [
+                {
+                  "name": "{blog}",
+                  "item": [
+                    {
+                      "name": "{year}",
+                      "item": [
+                        {
+                          "name": "{month}",
+                          "item": [
+                            {
+                              "name": "{title}",
+                              "item": [
+                                {
+                                  "name": "Get Blog Post",
+                                  "id": "68e59816-1e96-4e8d-b247-dc440654fdde",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/rest/p/:project/:blog/:year/:month/:title",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "rest",
+                                        "p",
+                                        ":project",
+                                        ":blog",
+                                        ":year",
+                                        ":month",
+                                        ":title"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "e5e03482-6c3a-4788-82ec-914ee9b5c2f2",
+                                          "key": "project",
+                                          "value": "<string>",
+                                          "description": "(Required) Project shortname/identifier"
+                                        },
+                                        {
+                                          "id": "2ec94eed-c97c-4906-b439-795b2283cf77",
+                                          "key": "blog",
+                                          "value": "<string>",
+                                          "description": "(Required) Blog tool mount point (e.g., blog)"
+                                        },
+                                        {
+                                          "id": "88c4c3d4-8281-458e-af61-5cc704c0f2f5",
+                                          "key": "year",
+                                          "value": "<integer>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "c82efad5-cb8f-48c1-8133-315b5c0e76af",
+                                          "key": "month",
+                                          "value": "<integer>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "56284fad-7d6e-4345-b143-4b1f30606722",
+                                          "key": "title",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    },
+                                    "description": "Retrieve a specific blog post."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "0f84f355-9f2a-4397-bb67-df43198b7935",
+                                      "name": "Blog post details",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/rest/p/:project/:blog/:year/:month/:title",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "rest",
+                                            "p",
+                                            ":project",
+                                            ":blog",
+                                            ":year",
+                                            ":month",
+                                            ":title"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "project"
+                                            },
+                                            {
+                                              "key": "blog"
+                                            },
+                                            {
+                                              "key": "year"
+                                            },
+                                            {
+                                              "key": "month"
+                                            },
+                                            {
+                                              "key": "title"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"post\": {\n    \"title\": \"<string>\",\n    \"text\": \"<string>\",\n    \"labels\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"timestamp\": \"<dateTime>\",\n    \"author\": \"<string>\"\n  }\n}",
+                                      "createdAt": "2026-07-28T02:59:27.000Z",
+                                      "updatedAt": "2026-07-28T02:59:27.000Z",
+                                      "uid": "35240-0f84f355-9f2a-4397-bb67-df43198b7935"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T02:59:27.000Z",
+                                  "updatedAt": "2026-07-28T02:59:27.000Z",
+                                  "uid": "35240-68e59816-1e96-4e8d-b247-dc440654fdde"
+                                },
+                                {
+                                  "name": "Update Blog Post",
+                                  "id": "a5b024ac-419c-48e1-a5e4-e2d63c2000c2",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/x-www-form-urlencoded"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "urlencoded",
+                                      "urlencoded": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "title",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "text",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "key": "labels",
+                                          "value": "<string>"
+                                        }
+                                      ]
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/rest/p/:project/:blog/:year/:month/:title",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "rest",
+                                        "p",
+                                        ":project",
+                                        ":blog",
+                                        ":year",
+                                        ":month",
+                                        ":title"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "13650faa-e301-4d9f-a2f9-d5a21cc520db",
+                                          "key": "project",
+                                          "value": "<string>",
+                                          "description": "(Required) Project shortname/identifier"
+                                        },
+                                        {
+                                          "id": "b492fe5f-f09a-4be6-9aec-8a571eef6aa5",
+                                          "key": "blog",
+                                          "value": "<string>",
+                                          "description": "(Required) Blog tool mount point (e.g., blog)"
+                                        },
+                                        {
+                                          "id": "9ef39204-fe97-45f7-af53-2978b58c0c7d",
+                                          "key": "year",
+                                          "value": "<integer>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "a777bf9e-6434-4fef-bb17-a8d1336a179a",
+                                          "key": "month",
+                                          "value": "<integer>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "90350a74-8e71-444e-bf43-4e8386d342ff",
+                                          "key": "title",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    },
+                                    "description": "Update an existing blog post."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "a7c02dc0-90b7-41ed-9642-0eba5087b20b",
+                                      "name": "Blog post updated",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/x-www-form-urlencoded"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "urlencoded",
+                                          "urlencoded": [
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "title",
+                                              "value": "<string>"
+                                            },
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "text",
+                                              "value": "<string>"
+                                            },
+                                            {
+                                              "key": "labels",
+                                              "value": "<string>"
+                                            }
+                                          ]
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/rest/p/:project/:blog/:year/:month/:title",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "rest",
+                                            "p",
+                                            ":project",
+                                            ":blog",
+                                            ":year",
+                                            ":month",
+                                            ":title"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "project"
+                                            },
+                                            {
+                                              "key": "blog"
+                                            },
+                                            {
+                                              "key": "year"
+                                            },
+                                            {
+                                              "key": "month"
+                                            },
+                                            {
+                                              "key": "title"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"post\": {\n    \"title\": \"<string>\",\n    \"text\": \"<string>\",\n    \"labels\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"timestamp\": \"<dateTime>\",\n    \"author\": \"<string>\"\n  }\n}",
+                                      "createdAt": "2026-07-28T02:59:27.000Z",
+                                      "updatedAt": "2026-07-28T02:59:27.000Z",
+                                      "uid": "35240-a7c02dc0-90b7-41ed-9642-0eba5087b20b"
+                                    },
+                                    {
+                                      "id": "585f8877-be2a-40f6-b8eb-a2da2f646b37",
+                                      "name": "Bad request",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/x-www-form-urlencoded"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "urlencoded",
+                                          "urlencoded": [
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "title",
+                                              "value": "<string>"
+                                            },
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "text",
+                                              "value": "<string>"
+                                            },
+                                            {
+                                              "key": "labels",
+                                              "value": "<string>"
+                                            }
+                                          ]
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/rest/p/:project/:blog/:year/:month/:title",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "rest",
+                                            "p",
+                                            ":project",
+                                            ":blog",
+                                            ":year",
+                                            ":month",
+                                            ":title"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "project"
+                                            },
+                                            {
+                                              "key": "blog"
+                                            },
+                                            {
+                                              "key": "year"
+                                            },
+                                            {
+                                              "key": "month"
+                                            },
+                                            {
+                                              "key": "title"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Bad Request",
+                                      "code": 400,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T02:59:27.000Z",
+                                      "updatedAt": "2026-07-28T02:59:27.000Z",
+                                      "uid": "35240-585f8877-be2a-40f6-b8eb-a2da2f646b37"
+                                    },
+                                    {
+                                      "id": "d8f8cc26-1c68-407f-883a-809a46145946",
+                                      "name": "Unauthorized",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/x-www-form-urlencoded"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "urlencoded",
+                                          "urlencoded": [
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "title",
+                                              "value": "<string>"
+                                            },
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "text",
+                                              "value": "<string>"
+                                            },
+                                            {
+                                              "key": "labels",
+                                              "value": "<string>"
+                                            }
+                                          ]
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/rest/p/:project/:blog/:year/:month/:title",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "rest",
+                                            "p",
+                                            ":project",
+                                            ":blog",
+                                            ":year",
+                                            ":month",
+                                            ":title"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "project"
+                                            },
+                                            {
+                                              "key": "blog"
+                                            },
+                                            {
+                                              "key": "year"
+                                            },
+                                            {
+                                              "key": "month"
+                                            },
+                                            {
+                                              "key": "title"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T02:59:27.000Z",
+                                      "updatedAt": "2026-07-28T02:59:27.000Z",
+                                      "uid": "35240-d8f8cc26-1c68-407f-883a-809a46145946"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T02:59:27.000Z",
+                                  "updatedAt": "2026-07-28T02:59:27.000Z",
+                                  "uid": "35240-a5b024ac-419c-48e1-a5e4-e2d63c2000c2"
+                                }
+                              ],
+                              "id": "837d1710-754b-42eb-bba6-538944f70b3b",
+                              "createdAt": "2026-07-28T02:59:27.000Z",
+                              "updatedAt": "2026-07-28T02:59:27.000Z",
+                              "uid": "35240-837d1710-754b-42eb-bba6-538944f70b3b"
+                            }
+                          ],
+                          "id": "133a866e-82b8-47f0-bba2-4b8e9bb1f483",
+                          "createdAt": "2026-07-28T02:59:27.000Z",
+                          "updatedAt": "2026-07-28T02:59:27.000Z",
+                          "uid": "35240-133a866e-82b8-47f0-bba2-4b8e9bb1f483"
+                        }
+                      ],
+                      "id": "543a2ea1-afc5-4ead-ace0-83ebc0e37a7b",
+                      "createdAt": "2026-07-28T02:59:27.000Z",
+                      "updatedAt": "2026-07-28T02:59:27.000Z",
+                      "uid": "35240-543a2ea1-afc5-4ead-ace0-83ebc0e37a7b"
+                    },
+                    {
+                      "name": "List Blog Posts",
+                      "id": "f788e64b-48ae-4025-9b2a-0c373de5450d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/p/:project/:blog",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "p",
+                            ":project",
+                            ":blog"
+                          ],
+                          "variable": [
+                            {
+                              "id": "104e1f00-f24e-4ccf-ad28-0c8ac00072fb",
+                              "key": "project",
+                              "value": "<string>",
+                              "description": "(Required) Project shortname/identifier"
+                            },
+                            {
+                              "id": "971729d8-f428-4d4c-bbcd-fba26194d885",
+                              "key": "blog",
+                              "value": "<string>",
+                              "description": "(Required) Blog tool mount point (e.g., blog)"
+                            }
+                          ]
+                        },
+                        "description": "List all blog posts for a project."
+                      },
+                      "response": [
+                        {
+                          "id": "a87d2a96-a584-438a-810e-18da69cd996b",
+                          "name": "List of blog posts",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/p/:project/:blog",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "p",
+                                ":project",
+                                ":blog"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "project"
+                                },
+                                {
+                                  "key": "blog"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"posts\": [\n    {\n      \"title\": \"<string>\",\n      \"text\": \"<string>\",\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"timestamp\": \"<dateTime>\",\n      \"author\": \"<string>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"text\": \"<string>\",\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"timestamp\": \"<dateTime>\",\n      \"author\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:59:27.000Z",
+                          "updatedAt": "2026-07-28T02:59:27.000Z",
+                          "uid": "35240-a87d2a96-a584-438a-810e-18da69cd996b"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:59:27.000Z",
+                      "updatedAt": "2026-07-28T02:59:27.000Z",
+                      "uid": "35240-f788e64b-48ae-4025-9b2a-0c373de5450d"
+                    },
+                    {
+                      "name": "Create Blog Post",
+                      "id": "43bb22be-9704-470d-afd9-7266abedfbc9",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) ",
+                              "key": "title",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "text",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "labels",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/p/:project/:blog",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "p",
+                            ":project",
+                            ":blog"
+                          ],
+                          "variable": [
+                            {
+                              "id": "caad6085-9a75-4ca2-bb02-2afa75748bf0",
+                              "key": "project",
+                              "value": "<string>",
+                              "description": "(Required) Project shortname/identifier"
+                            },
+                            {
+                              "id": "1391ed27-726e-4dff-90e3-3b75624b4247",
+                              "key": "blog",
+                              "value": "<string>",
+                              "description": "(Required) Blog tool mount point (e.g., blog)"
+                            }
+                          ]
+                        },
+                        "description": "Create a new blog post for the project."
+                      },
+                      "response": [
+                        {
+                          "id": "5411b7fb-9813-4b44-af6b-95a079d043f7",
+                          "name": "Blog post created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "title",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) ",
+                                  "key": "text",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "labels",
+                                  "value": "<string>"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/p/:project/:blog",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "p",
+                                ":project",
+                                ":blog"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "project"
+                                },
+                                {
+                                  "key": "blog"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"post\": {\n    \"title\": \"<string>\",\n    \"text\": \"<string>\",\n    \"labels\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"timestamp\": \"<dateTime>\",\n    \"author\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:59:27.000Z",
+                          "updatedAt": "2026-07-28T02:59:27.000Z",
+                          "uid": "35240-5411b7fb-9813-4b44-af6b-95a079d043f7"
+                        },
+                        {
+                          "id": "5b79611f-a760-495e-b7ea-f049d93eb838",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "title",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) ",
+                                  "key": "text",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "labels",
+                                  "value": "<string>"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/p/:project/:blog",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "p",
+                                ":project",
+                                ":blog"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "project"
+                                },
+                                {
+                                  "key": "blog"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:59:27.000Z",
+                          "updatedAt": "2026-07-28T02:59:27.000Z",
+                          "uid": "35240-5b79611f-a760-495e-b7ea-f049d93eb838"
+                        },
+                        {
+                          "id": "abbdefcc-ead2-464e-911d-11d66d114206",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "title",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) ",
+                                  "key": "text",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "labels",
+                                  "value": "<string>"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/p/:project/:blog",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "p",
+                                ":project",
+                                ":blog"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "project"
+                                },
+                                {
+                                  "key": "blog"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:59:27.000Z",
+                          "updatedAt": "2026-07-28T02:59:27.000Z",
+                          "uid": "35240-abbdefcc-ead2-464e-911d-11d66d114206"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:59:27.000Z",
+                      "updatedAt": "2026-07-28T02:59:27.000Z",
+                      "uid": "35240-43bb22be-9704-470d-afd9-7266abedfbc9"
+                    }
+                  ],
+                  "id": "a4bb0c4e-f7d6-47d4-8354-6316a5328086",
+                  "createdAt": "2026-07-28T02:59:27.000Z",
+                  "updatedAt": "2026-07-28T02:59:27.000Z",
+                  "uid": "35240-a4bb0c4e-f7d6-47d4-8354-6316a5328086"
+                }
+              ],
+              "id": "487b4e57-369b-4364-83a1-91a5f8a2e768",
+              "createdAt": "2026-07-28T02:59:27.000Z",
+              "updatedAt": "2026-07-28T02:59:27.000Z",
+              "uid": "35240-487b4e57-369b-4364-83a1-91a5f8a2e768"
+            }
+          ],
+          "id": "b0516998-9260-41e7-8338-830cc5912640",
+          "createdAt": "2026-07-28T02:59:27.000Z",
+          "updatedAt": "2026-07-28T02:59:27.000Z",
+          "uid": "35240-b0516998-9260-41e7-8338-830cc5912640"
+        }
+      ],
+      "id": "28c3d1a5-241f-4999-918d-44cadabbbc09",
+      "createdAt": "2026-07-28T02:59:27.000Z",
+      "updatedAt": "2026-07-28T02:59:27.000Z",
+      "uid": "35240-28c3d1a5-241f-4999-918d-44cadabbbc09"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sourceforge.net"
+    }
+  ]
+}

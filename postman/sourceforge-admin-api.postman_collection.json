@@ -1,0 +1,1708 @@
+{
+  "info": {
+    "_postman_id": "8407c8fa-161b-4021-99fb-58f890c5511e",
+    "name": "SourceForge Allura Admin API",
+    "description": "The SourceForge REST API provides programmatic access to project management, wikis, issue trackers, discussions, blogs, and administrative functions. All endpoints are prefixed with /rest/ and follow the project tool path pattern. Supports OAuth 2.0 and OAuth 1.0 authentication.\n\nContact Support:\n Name: SourceForge Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:59:26.000Z",
+    "updatedAt": "2026-07-28T02:59:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8407c8fa-161b-4021-99fb-58f890c5511e"
+  },
+  "item": [
+    {
+      "name": "rest",
+      "item": [
+        {
+          "name": "p",
+          "item": [
+            {
+              "name": "{project}",
+              "item": [
+                {
+                  "name": "admin",
+                  "item": [
+                    {
+                      "name": "export",
+                      "item": [
+                        {
+                          "name": "Export Project",
+                          "id": "641c9170-73cb-4338-9b30-502949a85877",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/p/:project/admin/export",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "p",
+                                ":project",
+                                "admin",
+                                "export"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "42e5ed0a-ba9d-43e3-b503-fb277ef5f176",
+                                  "key": "project",
+                                  "value": "<string>",
+                                  "description": "(Required) Project shortname/identifier"
+                                }
+                              ]
+                            },
+                            "description": "Submit a project export job."
+                          },
+                          "response": [
+                            {
+                              "id": "dc9e149f-4744-49e8-bf13-5d28d1b59422",
+                              "name": "Export job submitted",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/rest/p/:project/admin/export",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "rest",
+                                    "p",
+                                    ":project",
+                                    "admin",
+                                    "export"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "project"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<string>\",\n  \"job_id\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:59:26.000Z",
+                              "updatedAt": "2026-07-28T02:59:26.000Z",
+                              "uid": "35240-dc9e149f-4744-49e8-bf13-5d28d1b59422"
+                            },
+                            {
+                              "id": "b41e92bc-c45c-4126-999b-0d16229b8f8e",
+                              "name": "Bad request",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/rest/p/:project/admin/export",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "rest",
+                                    "p",
+                                    ":project",
+                                    "admin",
+                                    "export"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "project"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:59:26.000Z",
+                              "updatedAt": "2026-07-28T02:59:26.000Z",
+                              "uid": "35240-b41e92bc-c45c-4126-999b-0d16229b8f8e"
+                            },
+                            {
+                              "id": "fc00014b-5cb3-43a4-a786-e96583fcab9b",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/rest/p/:project/admin/export",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "rest",
+                                    "p",
+                                    ":project",
+                                    "admin",
+                                    "export"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "project"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:59:26.000Z",
+                              "updatedAt": "2026-07-28T02:59:26.000Z",
+                              "uid": "35240-fc00014b-5cb3-43a4-a786-e96583fcab9b"
+                            },
+                            {
+                              "id": "7c60d3ec-74cd-4deb-8ed3-93e3404259fc",
+                              "name": "Service unavailable - export already running",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/rest/p/:project/admin/export",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "rest",
+                                    "p",
+                                    ":project",
+                                    "admin",
+                                    "export"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "project"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Service Unavailable",
+                              "code": 503,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:59:26.000Z",
+                              "updatedAt": "2026-07-28T02:59:26.000Z",
+                              "uid": "35240-7c60d3ec-74cd-4deb-8ed3-93e3404259fc"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:59:26.000Z",
+                          "updatedAt": "2026-07-28T02:59:26.000Z",
+                          "uid": "35240-641c9170-73cb-4338-9b30-502949a85877"
+                        }
+                      ],
+                      "id": "3f7dcf9d-b41d-4c20-ba0b-9b3ec6915b59",
+                      "createdAt": "2026-07-28T02:59:26.000Z",
+                      "updatedAt": "2026-07-28T02:59:26.000Z",
+                      "uid": "35240-3f7dcf9d-b41d-4c20-ba0b-9b3ec6915b59"
+                    },
+                    {
+                      "name": "export_status",
+                      "item": [
+                        {
+                          "name": "Get Export Status",
+                          "id": "b7af25fa-a456-4727-983c-07e6d0ea1185",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/p/:project/admin/export_status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "p",
+                                ":project",
+                                "admin",
+                                "export_status"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "25c56d0f-e7c8-427b-9896-94be2f49e4ce",
+                                  "key": "project",
+                                  "value": "<string>",
+                                  "description": "(Required) Project shortname/identifier"
+                                }
+                              ]
+                            },
+                            "description": "Check the status of a project export job."
+                          },
+                          "response": [
+                            {
+                              "id": "c8bced55-6036-4df2-a5ad-88b6d8c47561",
+                              "name": "Export job status",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/rest/p/:project/admin/export_status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "rest",
+                                    "p",
+                                    ":project",
+                                    "admin",
+                                    "export_status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "project"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<string>\",\n  \"download_url\": \"<uri>\"\n}",
+                              "createdAt": "2026-07-28T02:59:26.000Z",
+                              "updatedAt": "2026-07-28T02:59:26.000Z",
+                              "uid": "35240-c8bced55-6036-4df2-a5ad-88b6d8c47561"
+                            },
+                            {
+                              "id": "e1dd5a4c-a2e3-4c48-b12a-557efea595be",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/rest/p/:project/admin/export_status",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "rest",
+                                    "p",
+                                    ":project",
+                                    "admin",
+                                    "export_status"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "project"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:59:26.000Z",
+                              "updatedAt": "2026-07-28T02:59:26.000Z",
+                              "uid": "35240-e1dd5a4c-a2e3-4c48-b12a-557efea595be"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:59:26.000Z",
+                          "updatedAt": "2026-07-28T02:59:26.000Z",
+                          "uid": "35240-b7af25fa-a456-4727-983c-07e6d0ea1185"
+                        }
+                      ],
+                      "id": "0365199f-0877-4071-b74e-f4aff2fac428",
+                      "createdAt": "2026-07-28T02:59:26.000Z",
+                      "updatedAt": "2026-07-28T02:59:26.000Z",
+                      "uid": "35240-0365199f-0877-4071-b74e-f4aff2fac428"
+                    },
+                    {
+                      "name": "install_tool",
+                      "item": [
+                        {
+                          "name": "Install Tool",
+                          "id": "9389e653-4b2b-4179-a00d-7b3d05cebf2c",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "description": "Tool name to install",
+                                  "key": "tool",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "URL mount point for the tool",
+                                  "key": "mount_point",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Display label for the tool",
+                                  "key": "mount_label",
+                                  "value": "<string>"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/p/:project/admin/install_tool",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "p",
+                                ":project",
+                                "admin",
+                                "install_tool"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "bf49ddde-2031-4dc3-9d28-751d2c6ebcd1",
+                                  "key": "project",
+                                  "value": "<string>",
+                                  "description": "(Required) Project shortname/identifier"
+                                }
+                              ]
+                            },
+                            "description": "Install a new tool into the project."
+                          },
+                          "response": [
+                            {
+                              "id": "365dc209-8e81-498a-aaac-207a8d3686bc",
+                              "name": "Tool installed successfully",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/x-www-form-urlencoded"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "urlencoded",
+                                  "urlencoded": [
+                                    {
+                                      "description": "Tool name to install",
+                                      "key": "tool",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "URL mount point for the tool",
+                                      "key": "mount_point",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Display label for the tool",
+                                      "key": "mount_label",
+                                      "value": "<string>"
+                                    }
+                                  ]
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/rest/p/:project/admin/install_tool",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "rest",
+                                    "p",
+                                    ":project",
+                                    "admin",
+                                    "install_tool"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "project"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:59:26.000Z",
+                              "updatedAt": "2026-07-28T02:59:26.000Z",
+                              "uid": "35240-365dc209-8e81-498a-aaac-207a8d3686bc"
+                            },
+                            {
+                              "id": "fd3f2ff4-2574-4078-9bf4-35df212855d8",
+                              "name": "Bad request",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/x-www-form-urlencoded"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "urlencoded",
+                                  "urlencoded": [
+                                    {
+                                      "description": "Tool name to install",
+                                      "key": "tool",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "URL mount point for the tool",
+                                      "key": "mount_point",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Display label for the tool",
+                                      "key": "mount_label",
+                                      "value": "<string>"
+                                    }
+                                  ]
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/rest/p/:project/admin/install_tool",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "rest",
+                                    "p",
+                                    ":project",
+                                    "admin",
+                                    "install_tool"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "project"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:59:26.000Z",
+                              "updatedAt": "2026-07-28T02:59:26.000Z",
+                              "uid": "35240-fd3f2ff4-2574-4078-9bf4-35df212855d8"
+                            },
+                            {
+                              "id": "14ecc06e-f260-4b4d-b5f4-42bdd44f04db",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/x-www-form-urlencoded"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "urlencoded",
+                                  "urlencoded": [
+                                    {
+                                      "description": "Tool name to install",
+                                      "key": "tool",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "URL mount point for the tool",
+                                      "key": "mount_point",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Display label for the tool",
+                                      "key": "mount_label",
+                                      "value": "<string>"
+                                    }
+                                  ]
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/rest/p/:project/admin/install_tool",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "rest",
+                                    "p",
+                                    ":project",
+                                    "admin",
+                                    "install_tool"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "project"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:59:26.000Z",
+                              "updatedAt": "2026-07-28T02:59:26.000Z",
+                              "uid": "35240-14ecc06e-f260-4b4d-b5f4-42bdd44f04db"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:59:26.000Z",
+                          "updatedAt": "2026-07-28T02:59:26.000Z",
+                          "uid": "35240-9389e653-4b2b-4179-a00d-7b3d05cebf2c"
+                        }
+                      ],
+                      "id": "d46de008-8908-4837-838d-2100f4b1009e",
+                      "createdAt": "2026-07-28T02:59:26.000Z",
+                      "updatedAt": "2026-07-28T02:59:26.000Z",
+                      "uid": "35240-d46de008-8908-4837-838d-2100f4b1009e"
+                    },
+                    {
+                      "name": "{tool}",
+                      "item": [
+                        {
+                          "name": "webhooks",
+                          "item": [
+                            {
+                              "name": "{type}",
+                              "item": [
+                                {
+                                  "name": "{id}",
+                                  "item": [
+                                    {
+                                      "name": "Update Webhook",
+                                      "id": "c131dcc3-d4dd-4af8-b288-8c982ea15d29",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/x-www-form-urlencoded"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "urlencoded",
+                                          "urlencoded": [
+                                            {
+                                              "description": "(Required) Webhook callback URL",
+                                              "key": "url",
+                                              "value": "<uri>"
+                                            },
+                                            {
+                                              "description": "Optional secret for webhook signature verification",
+                                              "key": "secret",
+                                              "value": "<string>"
+                                            }
+                                          ]
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/rest/p/:project/admin/:tool/webhooks/:type/:id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "rest",
+                                            "p",
+                                            ":project",
+                                            "admin",
+                                            ":tool",
+                                            "webhooks",
+                                            ":type",
+                                            ":id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "93576bbf-33d9-478f-9738-de64e218d34a",
+                                              "key": "project",
+                                              "value": "<string>",
+                                              "description": "(Required) Project shortname/identifier"
+                                            },
+                                            {
+                                              "id": "019aca8d-6592-4e0d-bef0-e8cead2b4fa0",
+                                              "key": "tool",
+                                              "value": "<string>",
+                                              "description": "(Required) "
+                                            },
+                                            {
+                                              "id": "bcf7ba66-7d3f-48ef-b642-b08c0639324b",
+                                              "key": "type",
+                                              "value": "<string>",
+                                              "description": "(Required) "
+                                            },
+                                            {
+                                              "id": "4d8789e9-a2ed-4ff1-8506-9b1fb988b304",
+                                              "key": "id",
+                                              "value": "<string>",
+                                              "description": "(Required) Webhook identifier"
+                                            }
+                                          ]
+                                        },
+                                        "description": "Update an existing webhook configuration."
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "5e17e56b-e049-494e-9bf9-0f59f20c7785",
+                                          "name": "Webhook updated",
+                                          "originalRequest": {
+                                            "method": "POST",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "application/x-www-form-urlencoded"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: bearer",
+                                                "key": "Authorization",
+                                                "value": "Bearer <token>"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "urlencoded",
+                                              "urlencoded": [
+                                                {
+                                                  "description": "(Required) Webhook callback URL",
+                                                  "key": "url",
+                                                  "value": "<uri>"
+                                                },
+                                                {
+                                                  "description": "Optional secret for webhook signature verification",
+                                                  "key": "secret",
+                                                  "value": "<string>"
+                                                }
+                                              ]
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/rest/p/:project/admin/:tool/webhooks/:type/:id",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "rest",
+                                                "p",
+                                                ":project",
+                                                "admin",
+                                                ":tool",
+                                                "webhooks",
+                                                ":type",
+                                                ":id"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "project"
+                                                },
+                                                {
+                                                  "key": "tool"
+                                                },
+                                                {
+                                                  "key": "type"
+                                                },
+                                                {
+                                                  "key": "id"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-07-28T02:59:26.000Z",
+                                          "updatedAt": "2026-07-28T02:59:26.000Z",
+                                          "uid": "35240-5e17e56b-e049-494e-9bf9-0f59f20c7785"
+                                        },
+                                        {
+                                          "id": "ea26a739-bed8-465d-86f4-718fe57b5b33",
+                                          "name": "Bad request",
+                                          "originalRequest": {
+                                            "method": "POST",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "application/x-www-form-urlencoded"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: bearer",
+                                                "key": "Authorization",
+                                                "value": "Bearer <token>"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "urlencoded",
+                                              "urlencoded": [
+                                                {
+                                                  "description": "(Required) Webhook callback URL",
+                                                  "key": "url",
+                                                  "value": "<uri>"
+                                                },
+                                                {
+                                                  "description": "Optional secret for webhook signature verification",
+                                                  "key": "secret",
+                                                  "value": "<string>"
+                                                }
+                                              ]
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/rest/p/:project/admin/:tool/webhooks/:type/:id",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "rest",
+                                                "p",
+                                                ":project",
+                                                "admin",
+                                                ":tool",
+                                                "webhooks",
+                                                ":type",
+                                                ":id"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "project"
+                                                },
+                                                {
+                                                  "key": "tool"
+                                                },
+                                                {
+                                                  "key": "type"
+                                                },
+                                                {
+                                                  "key": "id"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Bad Request",
+                                          "code": 400,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-07-28T02:59:26.000Z",
+                                          "updatedAt": "2026-07-28T02:59:26.000Z",
+                                          "uid": "35240-ea26a739-bed8-465d-86f4-718fe57b5b33"
+                                        },
+                                        {
+                                          "id": "7a79989f-01c3-4915-a7d5-9fbf0af084c4",
+                                          "name": "Unauthorized",
+                                          "originalRequest": {
+                                            "method": "POST",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "application/x-www-form-urlencoded"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: bearer",
+                                                "key": "Authorization",
+                                                "value": "Bearer <token>"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "urlencoded",
+                                              "urlencoded": [
+                                                {
+                                                  "description": "(Required) Webhook callback URL",
+                                                  "key": "url",
+                                                  "value": "<uri>"
+                                                },
+                                                {
+                                                  "description": "Optional secret for webhook signature verification",
+                                                  "key": "secret",
+                                                  "value": "<string>"
+                                                }
+                                              ]
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/rest/p/:project/admin/:tool/webhooks/:type/:id",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "rest",
+                                                "p",
+                                                ":project",
+                                                "admin",
+                                                ":tool",
+                                                "webhooks",
+                                                ":type",
+                                                ":id"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "project"
+                                                },
+                                                {
+                                                  "key": "tool"
+                                                },
+                                                {
+                                                  "key": "type"
+                                                },
+                                                {
+                                                  "key": "id"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Unauthorized",
+                                          "code": 401,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-07-28T02:59:26.000Z",
+                                          "updatedAt": "2026-07-28T02:59:26.000Z",
+                                          "uid": "35240-7a79989f-01c3-4915-a7d5-9fbf0af084c4"
+                                        }
+                                      ],
+                                      "createdAt": "2026-07-28T02:59:26.000Z",
+                                      "updatedAt": "2026-07-28T02:59:26.000Z",
+                                      "uid": "35240-c131dcc3-d4dd-4af8-b288-8c982ea15d29"
+                                    },
+                                    {
+                                      "name": "Delete Webhook",
+                                      "id": "5feb0a1b-93a2-4fe0-9a86-c529bb2cce0f",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "DELETE",
+                                        "header": [],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/rest/p/:project/admin/:tool/webhooks/:type/:id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "rest",
+                                            "p",
+                                            ":project",
+                                            "admin",
+                                            ":tool",
+                                            "webhooks",
+                                            ":type",
+                                            ":id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "8ec33761-3eb1-402a-8d09-6e7276d29df9",
+                                              "key": "project",
+                                              "value": "<string>",
+                                              "description": "(Required) Project shortname/identifier"
+                                            },
+                                            {
+                                              "id": "9aed8e6a-bf12-4e09-a6e6-0df989bba378",
+                                              "key": "tool",
+                                              "value": "<string>",
+                                              "description": "(Required) "
+                                            },
+                                            {
+                                              "id": "d8a23dd8-84de-41a6-9f04-ba3da5c46c64",
+                                              "key": "type",
+                                              "value": "<string>",
+                                              "description": "(Required) "
+                                            },
+                                            {
+                                              "id": "9d05830b-b498-4932-a107-dc01b905c874",
+                                              "key": "id",
+                                              "value": "<string>",
+                                              "description": "(Required) "
+                                            }
+                                          ]
+                                        },
+                                        "description": "Delete a webhook configuration."
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "9975d166-876b-412b-a271-6c99e2a1e5ce",
+                                          "name": "Webhook deleted",
+                                          "originalRequest": {
+                                            "method": "DELETE",
+                                            "header": [
+                                              {
+                                                "description": "Added as a part of security scheme: bearer",
+                                                "key": "Authorization",
+                                                "value": "Bearer <token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/rest/p/:project/admin/:tool/webhooks/:type/:id",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "rest",
+                                                "p",
+                                                ":project",
+                                                "admin",
+                                                ":tool",
+                                                "webhooks",
+                                                ":type",
+                                                ":id"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "project"
+                                                },
+                                                {
+                                                  "key": "tool"
+                                                },
+                                                {
+                                                  "key": "type"
+                                                },
+                                                {
+                                                  "key": "id"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "No Content",
+                                          "code": 204,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-07-28T02:59:26.000Z",
+                                          "updatedAt": "2026-07-28T02:59:26.000Z",
+                                          "uid": "35240-9975d166-876b-412b-a271-6c99e2a1e5ce"
+                                        },
+                                        {
+                                          "id": "0973627f-3125-4326-9902-f2e79584076b",
+                                          "name": "Unauthorized",
+                                          "originalRequest": {
+                                            "method": "DELETE",
+                                            "header": [
+                                              {
+                                                "description": "Added as a part of security scheme: bearer",
+                                                "key": "Authorization",
+                                                "value": "Bearer <token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/rest/p/:project/admin/:tool/webhooks/:type/:id",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "rest",
+                                                "p",
+                                                ":project",
+                                                "admin",
+                                                ":tool",
+                                                "webhooks",
+                                                ":type",
+                                                ":id"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "project"
+                                                },
+                                                {
+                                                  "key": "tool"
+                                                },
+                                                {
+                                                  "key": "type"
+                                                },
+                                                {
+                                                  "key": "id"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Unauthorized",
+                                          "code": 401,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-07-28T02:59:26.000Z",
+                                          "updatedAt": "2026-07-28T02:59:26.000Z",
+                                          "uid": "35240-0973627f-3125-4326-9902-f2e79584076b"
+                                        },
+                                        {
+                                          "id": "b2f494f3-b612-43ec-beb9-3a612f76cfd7",
+                                          "name": "Webhook not found",
+                                          "originalRequest": {
+                                            "method": "DELETE",
+                                            "header": [
+                                              {
+                                                "description": "Added as a part of security scheme: bearer",
+                                                "key": "Authorization",
+                                                "value": "Bearer <token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/rest/p/:project/admin/:tool/webhooks/:type/:id",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "rest",
+                                                "p",
+                                                ":project",
+                                                "admin",
+                                                ":tool",
+                                                "webhooks",
+                                                ":type",
+                                                ":id"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "project"
+                                                },
+                                                {
+                                                  "key": "tool"
+                                                },
+                                                {
+                                                  "key": "type"
+                                                },
+                                                {
+                                                  "key": "id"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Not Found",
+                                          "code": 404,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-07-28T02:59:26.000Z",
+                                          "updatedAt": "2026-07-28T02:59:26.000Z",
+                                          "uid": "35240-b2f494f3-b612-43ec-beb9-3a612f76cfd7"
+                                        }
+                                      ],
+                                      "createdAt": "2026-07-28T02:59:26.000Z",
+                                      "updatedAt": "2026-07-28T02:59:26.000Z",
+                                      "uid": "35240-5feb0a1b-93a2-4fe0-9a86-c529bb2cce0f"
+                                    }
+                                  ],
+                                  "id": "08a9a8d6-5371-4692-b385-021441b57106",
+                                  "createdAt": "2026-07-28T02:59:26.000Z",
+                                  "updatedAt": "2026-07-28T02:59:26.000Z",
+                                  "uid": "35240-08a9a8d6-5371-4692-b385-021441b57106"
+                                },
+                                {
+                                  "name": "Create Webhook",
+                                  "id": "ff156636-f243-49cc-939d-76909be3141a",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/x-www-form-urlencoded"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "urlencoded",
+                                      "urlencoded": [
+                                        {
+                                          "description": "(Required) Webhook callback URL",
+                                          "key": "url",
+                                          "value": "<uri>"
+                                        },
+                                        {
+                                          "description": "Optional secret for webhook signature verification",
+                                          "key": "secret",
+                                          "value": "<string>"
+                                        }
+                                      ]
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/rest/p/:project/admin/:tool/webhooks/:type",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "rest",
+                                        "p",
+                                        ":project",
+                                        "admin",
+                                        ":tool",
+                                        "webhooks",
+                                        ":type"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "d6d54530-125f-4402-bdae-c97db0b7ea71",
+                                          "key": "project",
+                                          "value": "<string>",
+                                          "description": "(Required) Project shortname/identifier"
+                                        },
+                                        {
+                                          "id": "47c76283-f8a8-42c5-9adf-962f2db8ce5c",
+                                          "key": "tool",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "51306c97-b4f3-49ba-91e8-fa373f50a503",
+                                          "key": "type",
+                                          "value": "<string>",
+                                          "description": "(Required) Webhook type (e.g., repo-push)"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Create a new webhook for a project tool (supports repo-push for Git, SVN, Mercurial)."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "ad337917-be13-490b-af77-c32c3c5b0031",
+                                      "name": "Webhook created",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/x-www-form-urlencoded"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "urlencoded",
+                                          "urlencoded": [
+                                            {
+                                              "description": "(Required) Webhook callback URL",
+                                              "key": "url",
+                                              "value": "<uri>"
+                                            },
+                                            {
+                                              "description": "Optional secret for webhook signature verification",
+                                              "key": "secret",
+                                              "value": "<string>"
+                                            }
+                                          ]
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/rest/p/:project/admin/:tool/webhooks/:type",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "rest",
+                                            "p",
+                                            ":project",
+                                            "admin",
+                                            ":tool",
+                                            "webhooks",
+                                            ":type"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "project"
+                                            },
+                                            {
+                                              "key": "tool"
+                                            },
+                                            {
+                                              "key": "type"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"webhook\": {\n    \"id\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"type\": \"<string>\",\n    \"active\": \"<boolean>\",\n    \"created\": \"<dateTime>\"\n  }\n}",
+                                      "createdAt": "2026-07-28T02:59:26.000Z",
+                                      "updatedAt": "2026-07-28T02:59:26.000Z",
+                                      "uid": "35240-ad337917-be13-490b-af77-c32c3c5b0031"
+                                    },
+                                    {
+                                      "id": "f6ef5ef7-7ddf-4a70-880a-d261656ca7e8",
+                                      "name": "Bad request",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/x-www-form-urlencoded"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "urlencoded",
+                                          "urlencoded": [
+                                            {
+                                              "description": "(Required) Webhook callback URL",
+                                              "key": "url",
+                                              "value": "<uri>"
+                                            },
+                                            {
+                                              "description": "Optional secret for webhook signature verification",
+                                              "key": "secret",
+                                              "value": "<string>"
+                                            }
+                                          ]
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/rest/p/:project/admin/:tool/webhooks/:type",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "rest",
+                                            "p",
+                                            ":project",
+                                            "admin",
+                                            ":tool",
+                                            "webhooks",
+                                            ":type"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "project"
+                                            },
+                                            {
+                                              "key": "tool"
+                                            },
+                                            {
+                                              "key": "type"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Bad Request",
+                                      "code": 400,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T02:59:26.000Z",
+                                      "updatedAt": "2026-07-28T02:59:26.000Z",
+                                      "uid": "35240-f6ef5ef7-7ddf-4a70-880a-d261656ca7e8"
+                                    },
+                                    {
+                                      "id": "f16e0499-d600-4f5b-9104-b16a293eea49",
+                                      "name": "Unauthorized",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/x-www-form-urlencoded"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "urlencoded",
+                                          "urlencoded": [
+                                            {
+                                              "description": "(Required) Webhook callback URL",
+                                              "key": "url",
+                                              "value": "<uri>"
+                                            },
+                                            {
+                                              "description": "Optional secret for webhook signature verification",
+                                              "key": "secret",
+                                              "value": "<string>"
+                                            }
+                                          ]
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/rest/p/:project/admin/:tool/webhooks/:type",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "rest",
+                                            "p",
+                                            ":project",
+                                            "admin",
+                                            ":tool",
+                                            "webhooks",
+                                            ":type"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "project"
+                                            },
+                                            {
+                                              "key": "tool"
+                                            },
+                                            {
+                                              "key": "type"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T02:59:26.000Z",
+                                      "updatedAt": "2026-07-28T02:59:26.000Z",
+                                      "uid": "35240-f16e0499-d600-4f5b-9104-b16a293eea49"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T02:59:26.000Z",
+                                  "updatedAt": "2026-07-28T02:59:26.000Z",
+                                  "uid": "35240-ff156636-f243-49cc-939d-76909be3141a"
+                                }
+                              ],
+                              "id": "e584d906-0846-4bd1-874f-c40b2499044c",
+                              "createdAt": "2026-07-28T02:59:26.000Z",
+                              "updatedAt": "2026-07-28T02:59:26.000Z",
+                              "uid": "35240-e584d906-0846-4bd1-874f-c40b2499044c"
+                            },
+                            {
+                              "name": "List Webhooks",
+                              "id": "727f56dd-6f5e-42ad-99f7-d78d912033a2",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/rest/p/:project/admin/:tool/webhooks",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "rest",
+                                    "p",
+                                    ":project",
+                                    "admin",
+                                    ":tool",
+                                    "webhooks"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "e62d78d5-7662-4686-a586-306bdcc59c3a",
+                                      "key": "project",
+                                      "value": "<string>",
+                                      "description": "(Required) Project shortname/identifier"
+                                    },
+                                    {
+                                      "id": "a0cf6716-a8f2-49a7-aee7-c5f12d739dab",
+                                      "key": "tool",
+                                      "value": "<string>",
+                                      "description": "(Required) Tool mount point"
+                                    }
+                                  ]
+                                },
+                                "description": "List all webhooks configured for a project tool."
+                              },
+                              "response": [
+                                {
+                                  "id": "2ca8679d-4c86-4d45-87f2-05b4a6152b38",
+                                  "name": "List of webhooks",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/rest/p/:project/admin/:tool/webhooks",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "rest",
+                                        "p",
+                                        ":project",
+                                        "admin",
+                                        ":tool",
+                                        "webhooks"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "project"
+                                        },
+                                        {
+                                          "key": "tool"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"webhooks\": [\n    {\n      \"id\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"type\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"created\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"type\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"created\": \"<dateTime>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T02:59:26.000Z",
+                                  "updatedAt": "2026-07-28T02:59:26.000Z",
+                                  "uid": "35240-2ca8679d-4c86-4d45-87f2-05b4a6152b38"
+                                },
+                                {
+                                  "id": "6d172af2-7c8a-4ecc-adca-663ac1dce548",
+                                  "name": "Unauthorized",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/rest/p/:project/admin/:tool/webhooks",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "rest",
+                                        "p",
+                                        ":project",
+                                        "admin",
+                                        ":tool",
+                                        "webhooks"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "project"
+                                        },
+                                        {
+                                          "key": "tool"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T02:59:26.000Z",
+                                  "updatedAt": "2026-07-28T02:59:26.000Z",
+                                  "uid": "35240-6d172af2-7c8a-4ecc-adca-663ac1dce548"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T02:59:26.000Z",
+                              "updatedAt": "2026-07-28T02:59:26.000Z",
+                              "uid": "35240-727f56dd-6f5e-42ad-99f7-d78d912033a2"
+                            }
+                          ],
+                          "id": "fea43b5a-8471-48d1-9516-8d0e2d30d1bb",
+                          "createdAt": "2026-07-28T02:59:26.000Z",
+                          "updatedAt": "2026-07-28T02:59:26.000Z",
+                          "uid": "35240-fea43b5a-8471-48d1-9516-8d0e2d30d1bb"
+                        }
+                      ],
+                      "id": "c61c6ff1-a51e-4591-88cd-08067f5e0013",
+                      "createdAt": "2026-07-28T02:59:26.000Z",
+                      "updatedAt": "2026-07-28T02:59:26.000Z",
+                      "uid": "35240-c61c6ff1-a51e-4591-88cd-08067f5e0013"
+                    }
+                  ],
+                  "id": "fd8e9126-2955-45c3-ba4f-f34cd0b84253",
+                  "createdAt": "2026-07-28T02:59:26.000Z",
+                  "updatedAt": "2026-07-28T02:59:26.000Z",
+                  "uid": "35240-fd8e9126-2955-45c3-ba4f-f34cd0b84253"
+                }
+              ],
+              "id": "90aefb90-7aa1-4812-8cd9-df21e8b460d4",
+              "createdAt": "2026-07-28T02:59:26.000Z",
+              "updatedAt": "2026-07-28T02:59:26.000Z",
+              "uid": "35240-90aefb90-7aa1-4812-8cd9-df21e8b460d4"
+            }
+          ],
+          "id": "4a3dace2-78f6-4f85-a066-a6f47d75104e",
+          "createdAt": "2026-07-28T02:59:26.000Z",
+          "updatedAt": "2026-07-28T02:59:26.000Z",
+          "uid": "35240-4a3dace2-78f6-4f85-a066-a6f47d75104e"
+        }
+      ],
+      "id": "b0b6d8bd-fd36-4407-82f5-5428d2e53818",
+      "createdAt": "2026-07-28T02:59:26.000Z",
+      "updatedAt": "2026-07-28T02:59:26.000Z",
+      "uid": "35240-b0b6d8bd-fd36-4407-82f5-5428d2e53818"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sourceforge.net"
+    }
+  ]
+}

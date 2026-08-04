@@ -1,0 +1,26 @@
+{
+  "provider": "sourceforge",
+  "sources": [
+    "sourceforge-admin-api-openapi.yml",
+    "sourceforge-blog-api-openapi.yml",
+    "sourceforge-discussion-api-openapi.yml",
+    "sourceforge-projects-api-openapi.yml",
+    "sourceforge-tracker-api-openapi.yml",
+    "sourceforge-users-api-openapi.yml",
+    "sourceforge-wikis-api-openapi.yml"
+  ],
+  "outputs": [
+    "sourceforge-admin-api-openapi.yml",
+    "sourceforge-blog-api-openapi.yml",
+    "sourceforge-discussion-api-openapi.yml",
+    "sourceforge-projects-api-openapi.yml",
+    "sourceforge-tracker-api-openapi.yml",
+    "sourceforge-users-api-openapi.yml",
+    "sourceforge-wikis-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,617 @@
+{
+  "info": {
+    "_postman_id": "84caea0e-197d-4475-a84a-103bf55d5442",
+    "name": "SourceForge Allura Admin Projects API",
+    "description": "The SourceForge REST API provides programmatic access to project management, wikis, issue trackers, discussions, blogs, and administrative functions. All endpoints are prefixed with /rest/ and follow the project tool path pattern. Supports OAuth 2.0 and OAuth 1.0 authentication.\n\nContact Support:\n Name: SourceForge Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:59:29.000Z",
+    "updatedAt": "2026-07-28T02:59:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-84caea0e-197d-4475-a84a-103bf55d5442"
+  },
+  "item": [
+    {
+      "name": "rest",
+      "item": [
+        {
+          "name": "p",
+          "item": [
+            {
+              "name": "{project}",
+              "item": [
+                {
+                  "name": "has_access",
+                  "item": [
+                    {
+                      "name": "Check Project Access",
+                      "id": "626dd334-ffcf-45b5-9b0b-526e4546cb6f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/p/:project/has_access",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "p",
+                            ":project",
+                            "has_access"
+                          ],
+                          "variable": [
+                            {
+                              "id": "4594e3e6-7a38-4b20-b7b4-26ba4d694e77",
+                              "key": "project",
+                              "value": "<string>",
+                              "description": "(Required) Project shortname/identifier"
+                            }
+                          ]
+                        },
+                        "description": "Check if the authenticated user has access to a project."
+                      },
+                      "response": [
+                        {
+                          "id": "c6d1a698-e6ac-454b-a7f9-e2bdf07079ae",
+                          "name": "Access check result",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/p/:project/has_access",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "p",
+                                ":project",
+                                "has_access"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "project"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"has_access\": \"<boolean>\",\n  \"permissions\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "createdAt": "2026-07-28T02:59:29.000Z",
+                          "updatedAt": "2026-07-28T02:59:29.000Z",
+                          "uid": "35240-c6d1a698-e6ac-454b-a7f9-e2bdf07079ae"
+                        },
+                        {
+                          "id": "db00bdd0-227e-4f11-8c06-aac493cb37a6",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/p/:project/has_access",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "p",
+                                ":project",
+                                "has_access"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "project"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:59:29.000Z",
+                          "updatedAt": "2026-07-28T02:59:29.000Z",
+                          "uid": "35240-db00bdd0-227e-4f11-8c06-aac493cb37a6"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:59:29.000Z",
+                      "updatedAt": "2026-07-28T02:59:29.000Z",
+                      "uid": "35240-626dd334-ffcf-45b5-9b0b-526e4546cb6f"
+                    }
+                  ],
+                  "id": "fa79a684-4ce2-45b5-87ea-c6b95f47360d",
+                  "createdAt": "2026-07-28T02:59:29.000Z",
+                  "updatedAt": "2026-07-28T02:59:29.000Z",
+                  "uid": "35240-fa79a684-4ce2-45b5-87ea-c6b95f47360d"
+                },
+                {
+                  "name": "Get Project",
+                  "id": "f398ab38-f6ae-4660-8a1a-7d87e4d8a484",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/p/:project",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "p",
+                        ":project"
+                      ],
+                      "variable": [
+                        {
+                          "id": "fe65c105-a8a1-4fef-b2ff-569f5302ff42",
+                          "key": "project",
+                          "value": "<string>",
+                          "description": "(Required) Project shortname/identifier"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve details for a specific SourceForge project."
+                  },
+                  "response": [
+                    {
+                      "id": "5a58e969-1753-4e87-a198-b50342524b39",
+                      "name": "Project details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/p/:project",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "p",
+                            ":project"
+                          ],
+                          "variable": [
+                            {
+                              "key": "project"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"name\": \"<string>\",\n  \"shortname\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:59:29.000Z",
+                      "updatedAt": "2026-07-28T02:59:29.000Z",
+                      "uid": "35240-5a58e969-1753-4e87-a198-b50342524b39"
+                    },
+                    {
+                      "id": "9d59951b-103a-4e7b-b999-f43ef4c43e8d",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/p/:project",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "p",
+                            ":project"
+                          ],
+                          "variable": [
+                            {
+                              "key": "project"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:59:29.000Z",
+                      "updatedAt": "2026-07-28T02:59:29.000Z",
+                      "uid": "35240-9d59951b-103a-4e7b-b999-f43ef4c43e8d"
+                    },
+                    {
+                      "id": "e65c6da8-9ad6-4a52-a0fb-05699ee17a73",
+                      "name": "Project not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/p/:project",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "p",
+                            ":project"
+                          ],
+                          "variable": [
+                            {
+                              "key": "project"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:59:29.000Z",
+                      "updatedAt": "2026-07-28T02:59:29.000Z",
+                      "uid": "35240-e65c6da8-9ad6-4a52-a0fb-05699ee17a73"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:59:29.000Z",
+                  "updatedAt": "2026-07-28T02:59:29.000Z",
+                  "uid": "35240-f398ab38-f6ae-4660-8a1a-7d87e4d8a484"
+                }
+              ],
+              "id": "30b18a75-822e-46d0-a90f-160e74d408bd",
+              "createdAt": "2026-07-28T02:59:29.000Z",
+              "updatedAt": "2026-07-28T02:59:29.000Z",
+              "uid": "35240-30b18a75-822e-46d0-a90f-160e74d408bd"
+            },
+            {
+              "name": "add_project",
+              "item": [
+                {
+                  "name": "Create Project",
+                  "id": "81213afc-ec4d-42a1-ac25-c5b07b12fcc7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) ",
+                          "key": "shortname",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "description",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/p/add_project",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "p",
+                        "add_project"
+                      ]
+                    },
+                    "description": "Create a new SourceForge project."
+                  },
+                  "response": [
+                    {
+                      "id": "6d83697a-97d5-4c8c-9996-42b2dee10547",
+                      "name": "Project created successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) ",
+                              "key": "shortname",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "name",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "description",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/p/add_project",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "p",
+                            "add_project"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"name\": \"<string>\",\n  \"shortname\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:59:29.000Z",
+                      "updatedAt": "2026-07-28T02:59:29.000Z",
+                      "uid": "35240-6d83697a-97d5-4c8c-9996-42b2dee10547"
+                    },
+                    {
+                      "id": "6b32b824-a973-45e2-a214-d3231b43efea",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) ",
+                              "key": "shortname",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "name",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "description",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/p/add_project",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "p",
+                            "add_project"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:59:29.000Z",
+                      "updatedAt": "2026-07-28T02:59:29.000Z",
+                      "uid": "35240-6b32b824-a973-45e2-a214-d3231b43efea"
+                    },
+                    {
+                      "id": "a3b0c08a-f75d-4cc8-b307-4edadd0a1d20",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) ",
+                              "key": "shortname",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "name",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "description",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/p/add_project",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "p",
+                            "add_project"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:59:29.000Z",
+                      "updatedAt": "2026-07-28T02:59:29.000Z",
+                      "uid": "35240-a3b0c08a-f75d-4cc8-b307-4edadd0a1d20"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:59:29.000Z",
+                  "updatedAt": "2026-07-28T02:59:29.000Z",
+                  "uid": "35240-81213afc-ec4d-42a1-ac25-c5b07b12fcc7"
+                }
+              ],
+              "id": "d3a20a14-7832-4a2d-b081-71573ad95278",
+              "createdAt": "2026-07-28T02:59:29.000Z",
+              "updatedAt": "2026-07-28T02:59:29.000Z",
+              "uid": "35240-d3a20a14-7832-4a2d-b081-71573ad95278"
+            }
+          ],
+          "id": "d335be65-8778-4011-a139-25e0d06c7559",
+          "createdAt": "2026-07-28T02:59:29.000Z",
+          "updatedAt": "2026-07-28T02:59:29.000Z",
+          "uid": "35240-d335be65-8778-4011-a139-25e0d06c7559"
+        }
+      ],
+      "id": "33c63cb8-ea85-4530-a916-0fe8e62dcfe9",
+      "createdAt": "2026-07-28T02:59:29.000Z",
+      "updatedAt": "2026-07-28T02:59:29.000Z",
+      "uid": "35240-33c63cb8-ea85-4530-a916-0fe8e62dcfe9"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://sourceforge.net"
+    }
+  ]
+}
