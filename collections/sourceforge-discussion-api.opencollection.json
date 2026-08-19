@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SourceForge Allura Admin Discussion API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Discussion",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Discussion Forums",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project/:discussion",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "discussion",
+                "value": "",
+                "type": "path",
+                "description": "Discussion tool mount point"
+              }
+            ]
+          },
+          "docs": "List all forums in the project discussion area."
+        },
+        {
+          "info": {
+            "name": "List Forum Topics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project/:discussion/:forum",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "discussion",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "forum",
+                "value": "",
+                "type": "path",
+                "description": "Forum identifier"
+              }
+            ]
+          },
+          "docs": "Get topics in a specific discussion forum."
+        },
+        {
+          "info": {
+            "name": "List Thread Posts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project/:discussion/:forum/thread/:thread",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "discussion",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "forum",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "thread",
+                "value": "",
+                "type": "path",
+                "description": "Thread identifier"
+              }
+            ]
+          },
+          "docs": "List all posts in a discussion thread."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,197 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SourceForge Allura Admin Tracker API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tracker",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Tickets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project/:tracker",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "tracker",
+                "value": "",
+                "type": "path",
+                "description": "Tracker tool mount point (e.g., tickets, bugs)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (default 0)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (default 25)"
+              }
+            ]
+          },
+          "docs": "List all tickets in the project tracker (paginated)."
+        },
+        {
+          "info": {
+            "name": "Create Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sourceforge.net/rest/p/:project/:tracker/new",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "tracker",
+                "value": "",
+                "type": "path",
+                "description": "Tracker tool mount point (e.g., tickets, bugs)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Create a new issue or ticket in the project tracker."
+        },
+        {
+          "info": {
+            "name": "Get Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project/:tracker/:ticketNumber",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "tracker",
+                "value": "",
+                "type": "path",
+                "description": "Tracker tool mount point (e.g., tickets, bugs)"
+              },
+              {
+                "name": "ticketNumber",
+                "value": "",
+                "type": "path",
+                "description": "Ticket number"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific ticket by number."
+        },
+        {
+          "info": {
+            "name": "Update Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sourceforge.net/rest/p/:project/:tracker/:ticketNumber/save",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "tracker",
+                "value": "",
+                "type": "path",
+                "description": "Tracker tool mount point (e.g., tickets, bugs)"
+              },
+              {
+                "name": "ticketNumber",
+                "value": "",
+                "type": "path",
+                "description": "Ticket number"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Update an existing ticket's details."
+        },
+        {
+          "info": {
+            "name": "Search Tickets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project/:tracker/search",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "tracker",
+                "value": "",
+                "type": "path",
+                "description": "Tracker tool mount point (e.g., tickets, bugs)"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query string"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search tickets in the tracker with filtering."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

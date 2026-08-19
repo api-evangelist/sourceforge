@@ -1,0 +1,162 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SourceForge Allura Admin Blog API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Blog",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Blog Posts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project/:blog",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "blog",
+                "value": "",
+                "type": "path",
+                "description": "Blog tool mount point (e.g., blog)"
+              }
+            ]
+          },
+          "docs": "List all blog posts for a project."
+        },
+        {
+          "info": {
+            "name": "Create Blog Post",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sourceforge.net/rest/p/:project/:blog",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "blog",
+                "value": "",
+                "type": "path",
+                "description": "Blog tool mount point (e.g., blog)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Create a new blog post for the project."
+        },
+        {
+          "info": {
+            "name": "Get Blog Post",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project/:blog/:year/:month/:title",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "blog",
+                "value": "",
+                "type": "path",
+                "description": "Blog tool mount point (e.g., blog)"
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "month",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "title",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific blog post."
+        },
+        {
+          "info": {
+            "name": "Update Blog Post",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sourceforge.net/rest/p/:project/:blog/:year/:month/:title",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "blog",
+                "value": "",
+                "type": "path",
+                "description": "Blog tool mount point (e.g., blog)"
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "month",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "title",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Update an existing blog post."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

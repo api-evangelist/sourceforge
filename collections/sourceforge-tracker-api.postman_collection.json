@@ -1,0 +1,1374 @@
+{
+  "item": [
+    {
+      "id": "5d5faa9b-4b59-4537-b15a-4623ec662499",
+      "name": "Tracker",
+      "description": {
+        "content": "Issue and ticket tracking",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e65db6c7-6564-426e-8bde-d86a40384802",
+          "name": "List Tickets",
+          "request": {
+            "name": "List Tickets",
+            "description": {
+              "content": "List all tickets in the project tracker (paginated).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "p",
+                ":project",
+                ":tracker"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Page number (default 0)"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Results per page (default 25)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project",
+                  "description": "(Required) Project shortname/identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tracker",
+                  "description": "(Required) Tracker tool mount point (e.g., tickets, bugs)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4dc7322f-e5eb-44c6-867f-d3bdfd9b3044",
+              "name": "List of tickets",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "p",
+                    ":project",
+                    ":tracker"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) Project shortname/identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tracker",
+                      "description": "(Required) Tracker tool mount point (e.g., tickets, bugs)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tickets\": [\n    {\n      \"ticket_num\": 6534,\n      \"summary\": \"string\",\n      \"description\": \"string\",\n      \"status\": \"string\",\n      \"assigned_to\": \"string\",\n      \"labels\": [\n        \"string\",\n        \"string\"\n      ],\n      \"created_date\": \"1974-08-12T01:49:39.228Z\",\n      \"mod_date\": \"1969-02-15T03:40:00.866Z\",\n      \"private\": true\n    },\n    {\n      \"ticket_num\": 5791,\n      \"summary\": \"string\",\n      \"description\": \"string\",\n      \"status\": \"string\",\n      \"assigned_to\": \"string\",\n      \"labels\": [\n        \"string\",\n        \"string\"\n      ],\n      \"created_date\": \"1957-09-20T02:43:11.840Z\",\n      \"mod_date\": \"1958-06-08T03:37:13.105Z\",\n      \"private\": true\n    }\n  ],\n  \"count\": 9276,\n  \"page\": 4106,\n  \"limit\": 2474\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "32bf0ea4-bb33-48e7-8088-50e5ebc2d57d",
+          "name": "Create Ticket",
+          "request": {
+            "name": "Create Ticket",
+            "description": {
+              "content": "Create a new issue or ticket in the project tracker.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "p",
+                ":project",
+                ":tracker",
+                "new"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project",
+                  "description": "(Required) Project shortname/identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tracker",
+                  "description": "(Required) Tracker tool mount point (e.g., tickets, bugs)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "ticket_form.summary",
+                  "value": "<string>",
+                  "description": "Issue title"
+                },
+                {
+                  "disabled": false,
+                  "key": "ticket_form.description",
+                  "value": "<string>",
+                  "description": "Detailed description"
+                },
+                {
+                  "disabled": false,
+                  "key": "ticket_form.status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ticket_form.assigned_to",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ticket_form.labels",
+                  "value": "<string>",
+                  "description": "Comma-separated tags"
+                },
+                {
+                  "disabled": false,
+                  "key": "ticket_form.private",
+                  "value": "<boolean>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "405eafa0-eb0c-40e6-b998-fa03746a08a1",
+              "name": "Ticket created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "p",
+                    ":project",
+                    ":tracker",
+                    "new"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) Project shortname/identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tracker",
+                      "description": "(Required) Tracker tool mount point (e.g., tickets, bugs)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Issue title",
+                        "type": "text/plain"
+                      },
+                      "key": "ticket_form.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Detailed description",
+                        "type": "text/plain"
+                      },
+                      "key": "ticket_form.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ticket_form.status",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ticket_form.assigned_to",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Comma-separated tags",
+                        "type": "text/plain"
+                      },
+                      "key": "ticket_form.labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ticket_form.private",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ticket\": {\n    \"ticket_num\": 3307,\n    \"summary\": \"string\",\n    \"description\": \"string\",\n    \"status\": \"string\",\n    \"assigned_to\": \"string\",\n    \"labels\": [\n      \"string\",\n      \"string\"\n    ],\n    \"created_date\": \"2007-11-01T22:53:47.545Z\",\n    \"mod_date\": \"2025-05-08T08:30:36.379Z\",\n    \"private\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9113c24b-d70c-4c69-ae12-3347a9f409bd",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "p",
+                    ":project",
+                    ":tracker",
+                    "new"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) Project shortname/identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tracker",
+                      "description": "(Required) Tracker tool mount point (e.g., tickets, bugs)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Issue title",
+                        "type": "text/plain"
+                      },
+                      "key": "ticket_form.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Detailed description",
+                        "type": "text/plain"
+                      },
+                      "key": "ticket_form.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ticket_form.status",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ticket_form.assigned_to",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Comma-separated tags",
+                        "type": "text/plain"
+                      },
+                      "key": "ticket_form.labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ticket_form.private",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "aac6b837-85e6-4950-b12c-ddefaf922af8",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "p",
+                    ":project",
+                    ":tracker",
+                    "new"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) Project shortname/identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tracker",
+                      "description": "(Required) Tracker tool mount point (e.g., tickets, bugs)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Issue title",
+                        "type": "text/plain"
+                      },
+                      "key": "ticket_form.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Detailed description",
+                        "type": "text/plain"
+                      },
+                      "key": "ticket_form.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ticket_form.status",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ticket_form.assigned_to",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Comma-separated tags",
+                        "type": "text/plain"
+                      },
+                      "key": "ticket_form.labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ticket_form.private",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35710386-0e9f-4d66-b63e-067466770822",
+          "name": "Get Ticket",
+          "request": {
+            "name": "Get Ticket",
+            "description": {
+              "content": "Retrieve details for a specific ticket by number.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "p",
+                ":project",
+                ":tracker",
+                ":ticketNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project",
+                  "description": "(Required) Project shortname/identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tracker",
+                  "description": "(Required) Tracker tool mount point (e.g., tickets, bugs)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ticketNumber",
+                  "description": "(Required) Ticket number"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "610142b7-5649-4452-9545-99545d9aad14",
+              "name": "Ticket details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "p",
+                    ":project",
+                    ":tracker",
+                    ":ticketNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) Project shortname/identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tracker",
+                      "description": "(Required) Tracker tool mount point (e.g., tickets, bugs)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ticketNumber",
+                      "description": "(Required) Ticket number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ticket\": {\n    \"ticket_num\": 3307,\n    \"summary\": \"string\",\n    \"description\": \"string\",\n    \"status\": \"string\",\n    \"assigned_to\": \"string\",\n    \"labels\": [\n      \"string\",\n      \"string\"\n    ],\n    \"created_date\": \"2007-11-01T22:53:47.545Z\",\n    \"mod_date\": \"2025-05-08T08:30:36.379Z\",\n    \"private\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8372933b-91a7-4d1a-8402-9a44a215a19e",
+              "name": "Ticket not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "p",
+                    ":project",
+                    ":tracker",
+                    ":ticketNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) Project shortname/identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tracker",
+                      "description": "(Required) Tracker tool mount point (e.g., tickets, bugs)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ticketNumber",
+                      "description": "(Required) Ticket number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba3720b3-2473-4f8e-b3b6-ab184c659c87",
+          "name": "Update Ticket",
+          "request": {
+            "name": "Update Ticket",
+            "description": {
+              "content": "Update an existing ticket's details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "p",
+                ":project",
+                ":tracker",
+                ":ticketNumber",
+                "save"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project",
+                  "description": "(Required) Project shortname/identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tracker",
+                  "description": "(Required) Tracker tool mount point (e.g., tickets, bugs)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ticketNumber",
+                  "description": "(Required) Ticket number"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "ticket_form.summary",
+                  "value": "<string>",
+                  "description": "Issue title"
+                },
+                {
+                  "disabled": false,
+                  "key": "ticket_form.description",
+                  "value": "<string>",
+                  "description": "Detailed description"
+                },
+                {
+                  "disabled": false,
+                  "key": "ticket_form.status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ticket_form.assigned_to",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ticket_form.labels",
+                  "value": "<string>",
+                  "description": "Comma-separated tags"
+                },
+                {
+                  "disabled": false,
+                  "key": "ticket_form.private",
+                  "value": "<boolean>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f8c8a9da-0f6a-4bac-9206-03ffb118b073",
+              "name": "Ticket updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "p",
+                    ":project",
+                    ":tracker",
+                    ":ticketNumber",
+                    "save"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) Project shortname/identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tracker",
+                      "description": "(Required) Tracker tool mount point (e.g., tickets, bugs)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ticketNumber",
+                      "description": "(Required) Ticket number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Issue title",
+                        "type": "text/plain"
+                      },
+                      "key": "ticket_form.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Detailed description",
+                        "type": "text/plain"
+                      },
+                      "key": "ticket_form.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ticket_form.status",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ticket_form.assigned_to",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Comma-separated tags",
+                        "type": "text/plain"
+                      },
+                      "key": "ticket_form.labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ticket_form.private",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ticket\": {\n    \"ticket_num\": 3307,\n    \"summary\": \"string\",\n    \"description\": \"string\",\n    \"status\": \"string\",\n    \"assigned_to\": \"string\",\n    \"labels\": [\n      \"string\",\n      \"string\"\n    ],\n    \"created_date\": \"2007-11-01T22:53:47.545Z\",\n    \"mod_date\": \"2025-05-08T08:30:36.379Z\",\n    \"private\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "804a27cd-935b-43a6-992f-1af0581dbdd1",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "p",
+                    ":project",
+                    ":tracker",
+                    ":ticketNumber",
+                    "save"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) Project shortname/identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tracker",
+                      "description": "(Required) Tracker tool mount point (e.g., tickets, bugs)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ticketNumber",
+                      "description": "(Required) Ticket number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Issue title",
+                        "type": "text/plain"
+                      },
+                      "key": "ticket_form.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Detailed description",
+                        "type": "text/plain"
+                      },
+                      "key": "ticket_form.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ticket_form.status",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ticket_form.assigned_to",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Comma-separated tags",
+                        "type": "text/plain"
+                      },
+                      "key": "ticket_form.labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ticket_form.private",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4a6277b6-ebc0-4991-a466-37dab73b115f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "p",
+                    ":project",
+                    ":tracker",
+                    ":ticketNumber",
+                    "save"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) Project shortname/identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tracker",
+                      "description": "(Required) Tracker tool mount point (e.g., tickets, bugs)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ticketNumber",
+                      "description": "(Required) Ticket number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Issue title",
+                        "type": "text/plain"
+                      },
+                      "key": "ticket_form.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Detailed description",
+                        "type": "text/plain"
+                      },
+                      "key": "ticket_form.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ticket_form.status",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ticket_form.assigned_to",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Comma-separated tags",
+                        "type": "text/plain"
+                      },
+                      "key": "ticket_form.labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ticket_form.private",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e3c3a4b-ab20-47a4-a580-ad3b43d6b62d",
+          "name": "Search Tickets",
+          "request": {
+            "name": "Search Tickets",
+            "description": {
+              "content": "Search tickets in the tracker with filtering.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "p",
+                ":project",
+                ":tracker",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search query string"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project",
+                  "description": "(Required) Project shortname/identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tracker",
+                  "description": "(Required) Tracker tool mount point (e.g., tickets, bugs)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d421a15f-7919-4d32-918a-3d0e8f0bd869",
+              "name": "Search results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "p",
+                    ":project",
+                    ":tracker",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) Project shortname/identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tracker",
+                      "description": "(Required) Tracker tool mount point (e.g., tickets, bugs)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tickets\": [\n    {\n      \"ticket_num\": 9486,\n      \"summary\": \"string\",\n      \"description\": \"string\",\n      \"status\": \"string\",\n      \"assigned_to\": \"string\",\n      \"labels\": [\n        \"string\",\n        \"string\"\n      ],\n      \"created_date\": \"1998-03-05T23:16:18.632Z\",\n      \"mod_date\": \"1987-05-15T05:47:29.855Z\",\n      \"private\": false\n    },\n    {\n      \"ticket_num\": 782,\n      \"summary\": \"string\",\n      \"description\": \"string\",\n      \"status\": \"string\",\n      \"assigned_to\": \"string\",\n      \"labels\": [\n        \"string\",\n        \"string\"\n      ],\n      \"created_date\": \"2011-11-01T00:38:55.535Z\",\n      \"mod_date\": \"1981-10-10T06:56:16.268Z\",\n      \"private\": false\n    }\n  ],\n  \"count\": 2614,\n  \"page\": 4560,\n  \"limit\": 8290\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sourceforge.net",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0e5eb4bb-d662-4de1-92d5-d8fb7435cafa",
+    "name": "SourceForge Allura Admin Tracker API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The SourceForge REST API provides programmatic access to project management, wikis, issue trackers, discussions, blogs, and administrative functions. All endpoints are prefixed with /rest/ and follow the project tool path pattern. Supports OAuth 2.0 and OAuth 1.0 authentication.\n\nContact Support:\n Name: SourceForge Support",
+      "type": "text/plain"
+    }
+  }
+}

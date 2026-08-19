@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SourceForge Allura Admin Projects API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific SourceForge project."
+        },
+        {
+          "info": {
+            "name": "Create Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sourceforge.net/rest/p/add_project",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Create a new SourceForge project."
+        },
+        {
+          "info": {
+            "name": "Check Project Access",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project/has_access",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              }
+            ]
+          },
+          "docs": "Check if the authenticated user has access to a project."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

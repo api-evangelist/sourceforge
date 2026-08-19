@@ -1,0 +1,230 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SourceForge Allura Admin API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Admin",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Export Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sourceforge.net/rest/p/:project/admin/export",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              }
+            ]
+          },
+          "docs": "Submit a project export job."
+        },
+        {
+          "info": {
+            "name": "Get Export Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project/admin/export_status",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              }
+            ]
+          },
+          "docs": "Check the status of a project export job."
+        },
+        {
+          "info": {
+            "name": "Install Tool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sourceforge.net/rest/p/:project/admin/install_tool",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "tool",
+                  "value": ""
+                },
+                {
+                  "name": "mount_point",
+                  "value": ""
+                },
+                {
+                  "name": "mount_label",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Install a new tool into the project."
+        },
+        {
+          "info": {
+            "name": "List Webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/p/:project/admin/:tool/webhooks",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "tool",
+                "value": "",
+                "type": "path",
+                "description": "Tool mount point"
+              }
+            ]
+          },
+          "docs": "List all webhooks configured for a project tool."
+        },
+        {
+          "info": {
+            "name": "Create Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sourceforge.net/rest/p/:project/admin/:tool/webhooks/:type",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "tool",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Webhook type (e.g., repo-push)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Create a new webhook for a project tool (supports repo-push for Git, SVN, Mercurial)."
+        },
+        {
+          "info": {
+            "name": "Update Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sourceforge.net/rest/p/:project/admin/:tool/webhooks/:type/:id",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "tool",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Webhook identifier"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Update an existing webhook configuration."
+        },
+        {
+          "info": {
+            "name": "Delete Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sourceforge.net/rest/p/:project/admin/:tool/webhooks/:type/:id",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path",
+                "description": "Project shortname/identifier"
+              },
+              {
+                "name": "tool",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a webhook configuration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

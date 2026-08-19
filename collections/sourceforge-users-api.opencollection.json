@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SourceForge Allura Admin Users API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Current User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/user"
+          },
+          "docs": "Retrieve the authenticated user's profile."
+        },
+        {
+          "info": {
+            "name": "List User Tools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sourceforge.net/rest/auth/tools/:tool_type",
+            "params": [
+              {
+                "name": "tool_type",
+                "value": "",
+                "type": "path",
+                "description": "Type of tool to list"
+              }
+            ]
+          },
+          "docs": "List all tools of the specified type accessible to the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Get OAuth2 Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sourceforge.net/rest/oauth2/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "grant_type",
+                  "value": ""
+                },
+                {
+                  "name": "code",
+                  "value": ""
+                },
+                {
+                  "name": "redirect_uri",
+                  "value": ""
+                },
+                {
+                  "name": "client_id",
+                  "value": ""
+                },
+                {
+                  "name": "code_verifier",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Exchange authorization code for OAuth2 access token."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
