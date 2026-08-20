@@ -23,6 +23,12 @@ position: Consumer
 access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/sourceforge.png
 tags:
+  - Open-Source
+  - Developer Tools
+  - Project Management
+  - Code Hosting
+  - Collaboration
+tags_raw:
   - Open Source
   - Developer Tools
   - Project Management
@@ -99,6 +105,8 @@ apis:
   humanURL: https://sourceforge.net/p/forge/documentation/Allura%20API/
   baseURL: https://sourceforge.net
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
@@ -139,6 +147,8 @@ apis:
   humanURL: https://sourceforge.net/p/forge/documentation/Allura%20API/
   baseURL: https://sourceforge.net
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
