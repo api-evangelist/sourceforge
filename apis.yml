@@ -6,6 +6,18 @@ description: >-
   forums, blogs, file releases, code repositories (Git, SVN, Mercurial), and a REST API for programmatic access to all
   project resources.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
