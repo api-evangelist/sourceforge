@@ -98,6 +98,8 @@ apis:
   humanURL: https://sourceforge.net/p/forge/documentation/Allura%20API/
   baseURL: https://sourceforge.net
   tags:
+  - Discussions
+  tags_raw:
   - Discussion
   properties:
   - type: OpenAPI
