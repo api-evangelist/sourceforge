@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: SourceForge Allura Admin Users API
+  title: SourceForge Allura Users API
   description: The SourceForge REST API provides programmatic access to project management, wikis, issue trackers, discussions, blogs, and administrative functions. All endpoints are prefixed with /rest/ and follow the project tool path pattern. Supports OAuth 2.0 and OAuth 1.0 authentication.
   version: v1
   contact:
@@ -101,17 +101,6 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    TokenResponse:
-      type: object
-      properties:
-        access_token:
-          type: string
-        token_type:
-          type: string
-        expires_in:
-          type: integer
-        scope:
-          type: string
     User:
       type: object
       properties:
@@ -125,6 +114,17 @@ components:
         created:
           type: string
           format: date-time
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+        expires_in:
+          type: integer
+        scope:
+          type: string
     ToolsResponse:
       type: object
       properties:
