@@ -36,7 +36,7 @@ position: Consuming
 access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/sourceforge.png
 tags:
-  - Open-Source
+  - Open Source
   - Developer Tools
   - Project Management
   - Code Hosting
@@ -47,6 +47,7 @@ tags_raw:
   - Project Management
   - Code Hosting
   - Collaboration
+  - Open-Source
 created: '2026-03-16'
 modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/sourceforge/refs/heads/main/apis.yml
@@ -56,7 +57,6 @@ apis:
   name: SourceForge Admin API
   description: Administrative operations including exports, tool installation, and webhooks
   humanURL: https://sourceforge.net/p/forge/documentation/Allura%20API/
-  baseURL: https://sourceforge.net
   tags:
   - Admin
   properties:
@@ -76,7 +76,6 @@ apis:
   name: SourceForge Blog API
   description: Project blog post management
   humanURL: https://sourceforge.net/p/forge/documentation/Allura%20API/
-  baseURL: https://sourceforge.net
   tags:
   - Blog
   properties:
@@ -96,7 +95,6 @@ apis:
   name: SourceForge Discussion API
   description: Forum and discussion thread management
   humanURL: https://sourceforge.net/p/forge/documentation/Allura%20API/
-  baseURL: https://sourceforge.net
   tags:
   - Discussions
   tags_raw:
@@ -118,7 +116,6 @@ apis:
   name: SourceForge Projects API
   description: Project creation, retrieval, and permission management
   humanURL: https://sourceforge.net/p/forge/documentation/Allura%20API/
-  baseURL: https://sourceforge.net
   tags:
   - Project
   tags_raw:
@@ -140,7 +137,6 @@ apis:
   name: SourceForge Tracker API
   description: Issue and ticket tracking
   humanURL: https://sourceforge.net/p/forge/documentation/Allura%20API/
-  baseURL: https://sourceforge.net
   tags:
   - Tracker
   properties:
@@ -160,7 +156,6 @@ apis:
   name: SourceForge Users API
   description: User profile and authentication
   humanURL: https://sourceforge.net/p/forge/documentation/Allura%20API/
-  baseURL: https://sourceforge.net
   tags:
   - User
   tags_raw:
@@ -182,7 +177,6 @@ apis:
   name: SourceForge Wikis API
   description: Project wiki page management
   humanURL: https://sourceforge.net/p/forge/documentation/Allura%20API/
-  baseURL: https://sourceforge.net
   tags:
   - Wikis
   properties:

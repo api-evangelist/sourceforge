@@ -101,20 +101,6 @@ paths:
                 $ref: '#/components/schemas/ThreadPostsResponse'
 components:
   schemas:
-    ForumTopicsResponse:
-      type: object
-      properties:
-        threads:
-          type: array
-          items:
-            type: object
-    ThreadPostsResponse:
-      type: object
-      properties:
-        posts:
-          type: array
-          items:
-            type: object
     ForumsResponse:
       type: object
       properties:
@@ -122,6 +108,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Forum'
+    ThreadPostsResponse:
+      type: object
+      properties:
+        posts:
+          type: array
+          items:
+            type: object
     Forum:
       type: object
       properties:
@@ -133,6 +126,13 @@ components:
           type: string
         num_topics:
           type: integer
+    ForumTopicsResponse:
+      type: object
+      properties:
+        threads:
+          type: array
+          items:
+            type: object
   parameters:
     ProjectId:
       name: project

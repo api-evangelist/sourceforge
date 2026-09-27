@@ -136,11 +136,6 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    BlogPostResponse:
-      type: object
-      properties:
-        post:
-          $ref: '#/components/schemas/BlogPost'
     BlogPost:
       type: object
       properties:
@@ -157,6 +152,11 @@ components:
           format: date-time
         author:
           type: string
+    BlogPostResponse:
+      type: object
+      properties:
+        post:
+          $ref: '#/components/schemas/BlogPost'
     BlogPostRequest:
       type: object
       required:
@@ -177,18 +177,18 @@ components:
           items:
             $ref: '#/components/schemas/BlogPost'
   parameters:
-    ProjectId:
-      name: project
-      in: path
-      required: true
-      description: Project shortname/identifier
-      schema:
-        type: string
     BlogTool:
       name: blog
       in: path
       required: true
       description: Blog tool mount point (e.g., blog)
+      schema:
+        type: string
+    ProjectId:
+      name: project
+      in: path
+      required: true
+      description: Project shortname/identifier
       schema:
         type: string
   securitySchemes:

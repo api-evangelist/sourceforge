@@ -221,6 +221,28 @@ paths:
           description: Webhook not found
 components:
   schemas:
+    ExportJobResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        job_id:
+          type: string
+    ExportStatusResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        download_url:
+          type: string
+          format: uri
+    WebhooksResponse:
+      type: object
+      properties:
+        webhooks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Webhook'
     WebhookRequest:
       type: object
       required:
@@ -233,21 +255,11 @@ components:
         secret:
           type: string
           description: Optional secret for webhook signature verification
-    ExportStatusResponse:
+    WebhookResponse:
       type: object
       properties:
-        status:
-          type: string
-        download_url:
-          type: string
-          format: uri
-    ExportJobResponse:
-      type: object
-      properties:
-        status:
-          type: string
-        job_id:
-          type: string
+        webhook:
+          $ref: '#/components/schemas/Webhook'
     Webhook:
       type: object
       properties:
@@ -263,18 +275,6 @@ components:
         created:
           type: string
           format: date-time
-    WebhookResponse:
-      type: object
-      properties:
-        webhook:
-          $ref: '#/components/schemas/Webhook'
-    WebhooksResponse:
-      type: object
-      properties:
-        webhooks:
-          type: array
-          items:
-            $ref: '#/components/schemas/Webhook'
   parameters:
     ProjectId:
       name: project

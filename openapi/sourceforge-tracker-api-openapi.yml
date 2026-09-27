@@ -171,6 +171,11 @@ paths:
                 $ref: '#/components/schemas/TicketsResponse'
 components:
   schemas:
+    TicketResponse:
+      type: object
+      properties:
+        ticket:
+          $ref: '#/components/schemas/Ticket'
     TicketRequest:
       type: object
       properties:
@@ -189,19 +194,6 @@ components:
           description: Comma-separated tags
         ticket_form.private:
           type: boolean
-    TicketsResponse:
-      type: object
-      properties:
-        tickets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Ticket'
-        count:
-          type: integer
-        page:
-          type: integer
-        limit:
-          type: integer
     Ticket:
       type: object
       properties:
@@ -227,11 +219,19 @@ components:
           format: date-time
         private:
           type: boolean
-    TicketResponse:
+    TicketsResponse:
       type: object
       properties:
-        ticket:
-          $ref: '#/components/schemas/Ticket'
+        tickets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ticket'
+        count:
+          type: integer
+        page:
+          type: integer
+        limit:
+          type: integer
   parameters:
     TrackerTool:
       name: tracker

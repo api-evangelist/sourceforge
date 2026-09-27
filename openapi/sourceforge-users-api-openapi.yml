@@ -101,6 +101,24 @@ paths:
           description: Unauthorized
 components:
   schemas:
+    ToolsResponse:
+      type: object
+      properties:
+        tools:
+          type: array
+          items:
+            type: object
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+        expires_in:
+          type: integer
+        scope:
+          type: string
     User:
       type: object
       properties:
@@ -114,24 +132,6 @@ components:
         created:
           type: string
           format: date-time
-    TokenResponse:
-      type: object
-      properties:
-        access_token:
-          type: string
-        token_type:
-          type: string
-        expires_in:
-          type: integer
-        scope:
-          type: string
-    ToolsResponse:
-      type: object
-      properties:
-        tools:
-          type: array
-          items:
-            type: object
     UserResponse:
       type: object
       properties:
