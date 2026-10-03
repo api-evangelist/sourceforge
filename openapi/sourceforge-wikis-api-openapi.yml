@@ -96,6 +96,24 @@ paths:
           description: Unauthorized
 components:
   schemas:
+    WikiPagesResponse:
+      type: object
+      properties:
+        pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/WikiPage'
+    WikiPageRequest:
+      type: object
+      required:
+      - text
+      properties:
+        text:
+          type: string
+          description: Wiki page content in Markdown or text format
+        labels:
+          type: string
+          description: Comma-separated labels
     WikiPage:
       type: object
       properties:
@@ -115,24 +133,6 @@ components:
           format: date-time
         author:
           type: string
-    WikiPagesResponse:
-      type: object
-      properties:
-        pages:
-          type: array
-          items:
-            $ref: '#/components/schemas/WikiPage'
-    WikiPageRequest:
-      type: object
-      required:
-      - text
-      properties:
-        text:
-          type: string
-          description: Wiki page content in Markdown or text format
-        labels:
-          type: string
-          description: Comma-separated labels
     WikiPageResponse:
       type: object
       properties:

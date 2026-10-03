@@ -228,6 +228,26 @@ components:
           type: string
         job_id:
           type: string
+    WebhookResponse:
+      type: object
+      properties:
+        webhook:
+          $ref: '#/components/schemas/Webhook'
+    Webhook:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+          format: uri
+        type:
+          type: string
+        active:
+          type: boolean
+        created:
+          type: string
+          format: date-time
     ExportStatusResponse:
       type: object
       properties:
@@ -255,26 +275,6 @@ components:
         secret:
           type: string
           description: Optional secret for webhook signature verification
-    WebhookResponse:
-      type: object
-      properties:
-        webhook:
-          $ref: '#/components/schemas/Webhook'
-    Webhook:
-      type: object
-      properties:
-        id:
-          type: string
-        url:
-          type: string
-          format: uri
-        type:
-          type: string
-        active:
-          type: boolean
-        created:
-          type: string
-          format: date-time
   parameters:
     ProjectId:
       name: project

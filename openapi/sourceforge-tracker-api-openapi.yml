@@ -170,30 +170,22 @@ paths:
               schema:
                 $ref: '#/components/schemas/TicketsResponse'
 components:
+  parameters:
+    ProjectId:
+      name: project
+      in: path
+      required: true
+      description: Project shortname/identifier
+      schema:
+        type: string
+    TrackerTool:
+      name: tracker
+      in: path
+      required: true
+      description: Tracker tool mount point (e.g., tickets, bugs)
+      schema:
+        type: string
   schemas:
-    TicketResponse:
-      type: object
-      properties:
-        ticket:
-          $ref: '#/components/schemas/Ticket'
-    TicketRequest:
-      type: object
-      properties:
-        ticket_form.summary:
-          type: string
-          description: Issue title
-        ticket_form.description:
-          type: string
-          description: Detailed description
-        ticket_form.status:
-          type: string
-        ticket_form.assigned_to:
-          type: string
-        ticket_form.labels:
-          type: string
-          description: Comma-separated tags
-        ticket_form.private:
-          type: boolean
     Ticket:
       type: object
       properties:
@@ -232,21 +224,29 @@ components:
           type: integer
         limit:
           type: integer
-  parameters:
-    TrackerTool:
-      name: tracker
-      in: path
-      required: true
-      description: Tracker tool mount point (e.g., tickets, bugs)
-      schema:
-        type: string
-    ProjectId:
-      name: project
-      in: path
-      required: true
-      description: Project shortname/identifier
-      schema:
-        type: string
+    TicketRequest:
+      type: object
+      properties:
+        ticket_form.summary:
+          type: string
+          description: Issue title
+        ticket_form.description:
+          type: string
+          description: Detailed description
+        ticket_form.status:
+          type: string
+        ticket_form.assigned_to:
+          type: string
+        ticket_form.labels:
+          type: string
+          description: Comma-separated tags
+        ticket_form.private:
+          type: boolean
+    TicketResponse:
+      type: object
+      properties:
+        ticket:
+          $ref: '#/components/schemas/Ticket'
   securitySchemes:
     BearerAuth:
       type: http

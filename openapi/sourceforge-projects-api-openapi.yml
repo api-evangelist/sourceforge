@@ -81,6 +81,14 @@ paths:
         '401':
           description: Unauthorized
 components:
+  parameters:
+    ProjectId:
+      name: project
+      in: path
+      required: true
+      description: Project shortname/identifier
+      schema:
+        type: string
   schemas:
     AccessResponse:
       type: object
@@ -114,14 +122,6 @@ components:
           type: string
         url:
           type: string
-  parameters:
-    ProjectId:
-      name: project
-      in: path
-      required: true
-      description: Project shortname/identifier
-      schema:
-        type: string
   securitySchemes:
     BearerAuth:
       type: http
