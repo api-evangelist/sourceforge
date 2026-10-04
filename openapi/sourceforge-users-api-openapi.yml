@@ -108,6 +108,22 @@ components:
           type: array
           items:
             type: object
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+        expires_in:
+          type: integer
+        scope:
+          type: string
+    UserResponse:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
     User:
       type: object
       properties:
@@ -121,22 +137,6 @@ components:
         created:
           type: string
           format: date-time
-    UserResponse:
-      type: object
-      properties:
-        user:
-          $ref: '#/components/schemas/User'
-    TokenResponse:
-      type: object
-      properties:
-        access_token:
-          type: string
-        token_type:
-          type: string
-        expires_in:
-          type: integer
-        scope:
-          type: string
   securitySchemes:
     BearerAuth:
       type: http

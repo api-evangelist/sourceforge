@@ -95,25 +95,22 @@ paths:
         '401':
           description: Unauthorized
 components:
+  parameters:
+    ProjectId:
+      name: project
+      in: path
+      required: true
+      description: Project shortname/identifier
+      schema:
+        type: string
+    WikiTool:
+      name: wiki
+      in: path
+      required: true
+      description: Wiki tool mount point (e.g., wiki, docs)
+      schema:
+        type: string
   schemas:
-    WikiPagesResponse:
-      type: object
-      properties:
-        pages:
-          type: array
-          items:
-            $ref: '#/components/schemas/WikiPage'
-    WikiPageRequest:
-      type: object
-      required:
-      - text
-      properties:
-        text:
-          type: string
-          description: Wiki page content in Markdown or text format
-        labels:
-          type: string
-          description: Comma-separated labels
     WikiPage:
       type: object
       properties:
@@ -147,21 +144,24 @@ components:
         timestamp:
           type: string
           format: date-time
-  parameters:
-    WikiTool:
-      name: wiki
-      in: path
-      required: true
-      description: Wiki tool mount point (e.g., wiki, docs)
-      schema:
-        type: string
-    ProjectId:
-      name: project
-      in: path
-      required: true
-      description: Project shortname/identifier
-      schema:
-        type: string
+    WikiPagesResponse:
+      type: object
+      properties:
+        pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/WikiPage'
+    WikiPageRequest:
+      type: object
+      required:
+      - text
+      properties:
+        text:
+          type: string
+          description: Wiki page content in Markdown or text format
+        labels:
+          type: string
+          description: Comma-separated labels
   securitySchemes:
     BearerAuth:
       type: http
