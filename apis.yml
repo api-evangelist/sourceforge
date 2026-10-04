@@ -193,6 +193,9 @@ apis:
   - type: OAuth
     url: https://sourceforge.net/auth/oauth/
 common:
+  - type: CapabilityMap
+    url: capabilities/sourceforge-capability-edges.yml
+    name: SourceForge Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/sourceforge/overview
   - type: AgenticAccess

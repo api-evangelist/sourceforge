@@ -1,0 +1,26 @@
+slug: sourceforge
+provider: SourceForge
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Tracker
+  spec_file: sourceforge-tracker-api-openapi.yml
+  capability_id: BC-4200
+  capability_id_l1: BC-4200
+  capability_name: Software Product Engineering Management
+  confidence: 0.75
+  evidence: GET /rest/p/{project}/{tracker} listTickets 'List Tickets'; POST .../new 'Create Ticket';
+    schemas Ticket, TicketRequest — the project issue tracker of a software-project hosting platform
+  reason: Operations create, update and search tickets in a software project's issue tracker, which is
+    software product engineering work (defect/backlog item management). The ticket type is not distinguished
+    between defect and backlog item, so no L2 is asserted.
