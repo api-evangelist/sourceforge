@@ -193,6 +193,12 @@ apis:
   - type: OAuth
     url: https://sourceforge.net/auth/oauth/
 common:
+  - type: Plans
+    url: plans/sourceforge-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/sourceforge-rate-limits.yml
+  - type: FinOps
+    url: finops/sourceforge-finops.yml
   - type: CapabilityMap
     url: capabilities/sourceforge-capability-edges.yml
     name: SourceForge Business Capability Map
