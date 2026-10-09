@@ -1,0 +1,39 @@
+generated: '2026-09-25'
+method: probed
+source: https://sourceforge.net/rest/p/sfapi/mcp
+status: gated
+server:
+  name: sourceforge
+  transport: http
+  url: https://sourceforge.net/rest/p/sfapi/mcp
+deployment:
+  mode: remote
+  endpoint: https://sourceforge.net/rest/p/sfapi/mcp
+  verified: probed
+  probe: gated
+  checked: '2026-09-25'
+  source: 'docs-check 2026-09-25 (first-party, on the provider''s own domain: docs-check stages 1-5 (llms.txt
+    / server-card / docs page); probed with JSON-RPC initialize; roadmap#590 #721)'
+  probe_why: RFC 9728 challenge; metadata fetched (resource https://sourceforge.net/rest/p/sfapi/mcp)
+  found_via: docs-check stages 1-5 (llms.txt / server-card / docs page)
+tools_note: No tool list captured. This manifest records a PROBED, reachable endpoint only; anonymous
+  tools/list was auth-gated or the server requires an initialize handshake this reachability probe does
+  not perform. Run signals/audit_mcp_authorship.py --probe to enumerate tools and settle platform-vs-provider
+  authorship. Do NOT derive a tool list from the OpenAPI and store it here -- that is a candidate manifest,
+  and it belongs under an X-MCPServerCandidate pointer.
+rfc9728:
+  endpoint: https://sourceforge.net/rest/p/sfapi/mcp
+  metadata_url: https://sourceforge.net/.well-known/oauth-protected-resource
+  discovered_via: WWW-Authenticate resource_metadata on an anonymous POST initialize
+  fetched: '2026-09-25'
+  http_status: 200
+  content_type: application/json
+  document:
+    resource: https://sourceforge.net/rest/p/sfapi/mcp
+    authorization_servers:
+    - https://sourceforge.net
+    scopes_supported:
+    - mcp:ai_search_stats:read
+    bearer_methods_supported:
+    - header
+    resource_documentation: https://sourceforge.net/rest/p/sfapi/mcp
