@@ -95,22 +95,32 @@ paths:
         '401':
           description: Unauthorized
 components:
-  parameters:
-    ProjectId:
-      name: project
-      in: path
-      required: true
-      description: Project shortname/identifier
-      schema:
-        type: string
-    WikiTool:
-      name: wiki
-      in: path
-      required: true
-      description: Wiki tool mount point (e.g., wiki, docs)
-      schema:
-        type: string
   schemas:
+    WikiPageRequest:
+      type: object
+      required:
+      - text
+      properties:
+        text:
+          type: string
+          description: Wiki page content in Markdown or text format
+        labels:
+          type: string
+          description: Comma-separated labels
+    WikiPageResponse:
+      type: object
+      properties:
+        title:
+          type: string
+        text:
+          type: string
+        labels:
+          type: array
+          items:
+            type: string
+        timestamp:
+          type: string
+          format: date-time
     WikiPage:
       type: object
       properties:
@@ -130,20 +140,6 @@ components:
           format: date-time
         author:
           type: string
-    WikiPageResponse:
-      type: object
-      properties:
-        title:
-          type: string
-        text:
-          type: string
-        labels:
-          type: array
-          items:
-            type: string
-        timestamp:
-          type: string
-          format: date-time
     WikiPagesResponse:
       type: object
       properties:
@@ -151,17 +147,21 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/WikiPage'
-    WikiPageRequest:
-      type: object
-      required:
-      - text
-      properties:
-        text:
-          type: string
-          description: Wiki page content in Markdown or text format
-        labels:
-          type: string
-          description: Comma-separated labels
+  parameters:
+    WikiTool:
+      name: wiki
+      in: path
+      required: true
+      description: Wiki tool mount point (e.g., wiki, docs)
+      schema:
+        type: string
+    ProjectId:
+      name: project
+      in: path
+      required: true
+      description: Project shortname/identifier
+      schema:
+        type: string
   securitySchemes:
     BearerAuth:
       type: http

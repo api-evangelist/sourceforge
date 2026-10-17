@@ -101,13 +101,6 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    ToolsResponse:
-      type: object
-      properties:
-        tools:
-          type: array
-          items:
-            type: object
     TokenResponse:
       type: object
       properties:
@@ -119,11 +112,6 @@ components:
           type: integer
         scope:
           type: string
-    UserResponse:
-      type: object
-      properties:
-        user:
-          $ref: '#/components/schemas/User'
     User:
       type: object
       properties:
@@ -137,6 +125,18 @@ components:
         created:
           type: string
           format: date-time
+    UserResponse:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+    ToolsResponse:
+      type: object
+      properties:
+        tools:
+          type: array
+          items:
+            type: object
   securitySchemes:
     BearerAuth:
       type: http

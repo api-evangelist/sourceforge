@@ -171,6 +171,42 @@ paths:
                 $ref: '#/components/schemas/TicketsResponse'
 components:
   schemas:
+    TicketResponse:
+      type: object
+      properties:
+        ticket:
+          $ref: '#/components/schemas/Ticket'
+    TicketRequest:
+      type: object
+      properties:
+        ticket_form.summary:
+          type: string
+          description: Issue title
+        ticket_form.description:
+          type: string
+          description: Detailed description
+        ticket_form.status:
+          type: string
+        ticket_form.assigned_to:
+          type: string
+        ticket_form.labels:
+          type: string
+          description: Comma-separated tags
+        ticket_form.private:
+          type: boolean
+    TicketsResponse:
+      type: object
+      properties:
+        tickets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ticket'
+        count:
+          type: integer
+        page:
+          type: integer
+        limit:
+          type: integer
     Ticket:
       type: object
       properties:
@@ -196,55 +232,19 @@ components:
           format: date-time
         private:
           type: boolean
-    TicketResponse:
-      type: object
-      properties:
-        ticket:
-          $ref: '#/components/schemas/Ticket'
-    TicketsResponse:
-      type: object
-      properties:
-        tickets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Ticket'
-        count:
-          type: integer
-        page:
-          type: integer
-        limit:
-          type: integer
-    TicketRequest:
-      type: object
-      properties:
-        ticket_form.summary:
-          type: string
-          description: Issue title
-        ticket_form.description:
-          type: string
-          description: Detailed description
-        ticket_form.status:
-          type: string
-        ticket_form.assigned_to:
-          type: string
-        ticket_form.labels:
-          type: string
-          description: Comma-separated tags
-        ticket_form.private:
-          type: boolean
   parameters:
-    ProjectId:
-      name: project
-      in: path
-      required: true
-      description: Project shortname/identifier
-      schema:
-        type: string
     TrackerTool:
       name: tracker
       in: path
       required: true
       description: Tracker tool mount point (e.g., tickets, bugs)
+      schema:
+        type: string
+    ProjectId:
+      name: project
+      in: path
+      required: true
+      description: Project shortname/identifier
       schema:
         type: string
   securitySchemes:
